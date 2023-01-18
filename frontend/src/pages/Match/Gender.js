@@ -1,8 +1,9 @@
 import { Button, Box, Text, HStack, ButtonGroup, VStack } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import DialogueCloud from "../../components/DialogueCloud";
+import { Gender } from "../../constants/paths";
 
-const GenderPage = ({ value, setValue, onNext }) => {
+const GenderStep = ({ value, setValue, onNext }) => {
   return (
     <HStack mt={20} display="flex" justifyContent="center" alignItems="center">
       {(value === "Female" || value === null) && (
@@ -50,13 +51,8 @@ const GenderPage = ({ value, setValue, onNext }) => {
                     initial={{ x: -1000, opacity: 0 }}
                     animate={{ x: 0, opacity: 1, y: [100, 0, 100, 0, 100] }}
                     transition={{ x: { duration: 2 }, opacity: { duration: 2 }, y: { repeat: Infinity, duration: 2 } }}
-                    exit={{ x: 1000, opacity: 0 }}
-                    // whileHover={{
-                    //   y: [0, 80, 0, 80, 0],
-                    //   scale: 1.2,
-                    //   transition: { repeat: "once", y: { repeat: Infinity, duration: 1.5 } },
-                    // }}
-                    src="/Agnes1.svg"
+                    exit={{ x: -1000, opacity: 0 }}
+                    src={Gender["Female"][1]}
                     style={{ width: "600px", height: "800px" }}
                   />
                 ) : (
@@ -70,8 +66,8 @@ const GenderPage = ({ value, setValue, onNext }) => {
                     transition={{ x: { duration: 2 }, opacity: { duration: 2 } }}
                     initial={{ x: -1000, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: 1000, opacity: 0 }}
-                    src="/Agnes.svg"
+                    exit={{ x: -1000, opacity: 0 }}
+                    src={Gender["Female"][0]}
                     style={{ width: "600px", height: "800px" }}
                   />
                 )}
@@ -136,7 +132,7 @@ const GenderPage = ({ value, setValue, onNext }) => {
                     initial={{ x: 1000, opacity: 0 }}
                     animate={{ x: 0, opacity: 1, y: [100, 0, 100, 0, 100] }}
                     exit={{ x: 1000, opacity: 0 }}
-                    src="/batman2.svg"
+                    src={Gender["Male"][1]}
                     style={{ width: "600px", height: "800px" }}
                   />
                 ) : (
@@ -145,13 +141,13 @@ const GenderPage = ({ value, setValue, onNext }) => {
                     transition={{ x: { duration: 2 }, opacity: { duration: 2 } }}
                     initial={{ x: 1000, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: -1000, opacity: 0 }}
+                    exit={{ x: 1000, opacity: 0 }}
                     whileHover={{
                       y: [0, 80, 0, 80, 0],
                       scale: 1.2,
                       transition: { repeat: "once", y: { repeat: Infinity, duration: 1.5 } },
                     }}
-                    src="/batman1.svg"
+                    src={Gender["Male"][0]}
                     style={{ width: "600px", height: "800px" }}
                   />
                 )}
@@ -164,4 +160,4 @@ const GenderPage = ({ value, setValue, onNext }) => {
   );
 };
 
-export default GenderPage;
+export default GenderStep;

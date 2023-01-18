@@ -1,13 +1,13 @@
 import { Flex, FormControl, FormHelperText, FormLabel, Input } from "@chakra-ui/react";
 
-const FormComponent = ({ label, type, helperText, key, value, setValue }) => {
+const FormComponent = ({ label, type, helperText, key, values, setValue }) => {
   return (
     <Flex justifyContent="center" alignItems="center">
       <FormControl textColor="white">
         <FormLabel>{label}</FormLabel>
         <Input
           type={type}
-          value={value}
+          value={values[key]}
           onChange={(evt) => {
             setValue(key, evt.target.value);
           }}

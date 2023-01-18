@@ -2,8 +2,9 @@ import { Box, Button, ButtonGroup, Card, CardBody, CardHeader, Flex } from "@cha
 import { useState, Suspense } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import GenderPage from "./Gender";
-import Headware from "./Headware";
+import GenderStep from "./Gender";
+import StepComponent from "./StepComponent";
+import { StepsOrder } from "../../constants/paths";
 
 const Container = styled.section`
   width: 100%;
@@ -85,12 +86,10 @@ const item = {
   show: { opacity: 1 },
 };
 
-const Pages = [GenderPage, Headware];
-
 const MatchPage = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(0);
   const nextStep = () => {
-    if (currentStep < Pages.length) setCurrentStep((currentStep) => currentStep + 1);
+    if (currentStep < StepsOrder.length) setCurrentStep((currentStep) => currentStep + 1);
   };
   const previousStep = () => {
     if (currentStep > 0) setCurrentStep((currentStep) => currentStep - 1);
@@ -112,16 +111,8 @@ const MatchPage = () => {
       <Suspense fallback={<h1>Loading...</h1>}>
         <DarkOverlay />
 
-        <Flex
-          position="absolute"
-          justifyContent="center"
-          alignItems="center"
-          top="8rem"
-          bg="black"
-          left="5em"
-          right="5em"
-        >
-          <Card bg="black">
+        <Flex position="absolute" justifyContent="center" alignItems="center" top="8rem" left="5em" right="5em">
+          <Card bg="grey">
             <CardHeader>
               <Title variants={container} initial="hidden" animate="show">
                 <div>
@@ -144,13 +135,20 @@ const MatchPage = () => {
               </Title>
             </CardHeader>
             <CardBody>
-              {currentStep === 1 && <GenderPage value={formValues["gender"]} setValue={setValue} onNext={nextStep} />}
-              {currentStep === 2 && <Headware values={formValues["headwear"]} setValue={setValue} />}
-              {currentStep > 1 && (
-                <ButtonGroup display="flex" justifyContent="center" alignItems="center" mt={10} spacing={20}>
-                  <Button onClick={previousStep}>Previous</Button>
-                  <Button onClick={nextStep}>Next</Button>
-                </ButtonGroup>
+              {currentStep === 0 && <GenderStep value={formValues["gender"]} setValue={setValue} onNext={nextStep} />}
+              {currentStep > 0 && (
+                <>
+                  <StepComponent
+                    step={StepsOrder[currentStep]}
+                    values={formValues}
+                    setValue={setValue}
+                    gender={formValues["gender"]}
+                  />
+                  <ButtonGroup display="flex" justifyContent="center" alignItems="center" mt={10} spacing={20}>
+                    <Button onClick={previousStep}>Previous</Button>
+                    {currentStep < StepsOrder.length - 1 && <Button onClick={nextStep}>Next</Button>}
+                  </ButtonGroup>
+                </>
               )}
             </CardBody>
           </Card>

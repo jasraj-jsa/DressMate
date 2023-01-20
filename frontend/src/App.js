@@ -1,8 +1,4 @@
-import "./App.css";
-
-import Header from "./components/Header";
 import HomePage from "./pages/Home";
-import ModelPage from "./pages/Model";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 
 import { ThemeProvider } from "styled-components";
@@ -29,9 +25,6 @@ function App() {
           <Routes>
             <Route path="/">
               <Route index element={<HomePage />} />
-            </Route>
-            <Route path="/model">
-              <Route index element={<ModelPage />} />
             </Route>
             <Route path="/match">
               <Route index element={<MatchPage />} />

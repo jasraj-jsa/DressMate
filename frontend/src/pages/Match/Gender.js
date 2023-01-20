@@ -7,7 +7,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
   return (
     <HStack mt={20} display="flex" justifyContent="center" alignItems="center">
       {(value === "Female" || value === null) && (
-        <VStack>
+        <VStack spacing="none">
           <AnimatePresence mode="wait">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 3 } }}>
               <DialogueCloud>
@@ -39,7 +39,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
             <motion.div
               // animate={{ y: [0, 150, 0, 150, 0] }}
               // transition={{ duration: 5 }}
-              exit={{ x: 1000, opacity: 0 }}
+              // exit={{ x: 1000, opacity: 0 }}
               onClick={() => {
                 setValue("gender", "Female");
               }}
@@ -50,10 +50,14 @@ const GenderStep = ({ value, setValue, onNext }) => {
                     key="Agnes1"
                     initial={{ x: -1000, opacity: 0 }}
                     animate={{ x: 0, opacity: 1, y: [100, 0, 100, 0, 100] }}
-                    transition={{ x: { duration: 2 }, opacity: { duration: 2 }, y: { repeat: Infinity, duration: 2 } }}
+                    transition={{
+                      x: { duration: 2 },
+                      opacity: { duration: 2 },
+                      y: { repeat: Infinity, duration: 2 },
+                    }}
                     exit={{ x: -1000, opacity: 0 }}
                     src={Gender["Female"][1]}
-                    style={{ width: "600px", height: "800px" }}
+                    style={{ height: "80vh" }}
                   />
                 ) : (
                   <motion.img
@@ -68,7 +72,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: -1000, opacity: 0 }}
                     src={Gender["Female"][0]}
-                    style={{ width: "600px", height: "800px" }}
+                    style={{ height: "90vh" }}
                   />
                 )}
               </AnimatePresence>
@@ -123,17 +127,23 @@ const GenderStep = ({ value, setValue, onNext }) => {
                 {value === "Male" ? (
                   <motion.img
                     key="batman2"
-                    transition={{ x: { duration: 2 }, opacity: { duration: 2 }, y: { repeat: Infinity, duration: 2 } }}
+                    transition={{
+                      x: { duration: 2 },
+                      opacity: { duration: 2 },
+                      y: { repeat: Infinity, duration: 2 },
+                      scale: { duration: 2 },
+                      rotate: { duration: 2 },
+                    }}
                     // whileHover={{
                     //   y: [0, 80, 0, 80, 0],
                     //   scale: 1.2,
                     //   transition: { repeat: "once", y: { repeat: Infinity, duration: 1.5 } },
                     // }}
-                    initial={{ x: 1000, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1, y: [100, 0, 100, 0, 100] }}
+                    initial={{ x: 1000, opacity: 0, rotate: 60 }}
+                    animate={{ x: 0, opacity: 1, y: [100, 0, 100, 0, 100], rotate: 0 }}
                     exit={{ x: 1000, opacity: 0 }}
                     src={Gender["Male"][1]}
-                    style={{ width: "600px", height: "800px" }}
+                    style={{ height: "90vh" }}
                   />
                 ) : (
                   <motion.img
@@ -148,7 +158,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                       transition: { repeat: "once", y: { repeat: Infinity, duration: 1.5 } },
                     }}
                     src={Gender["Male"][0]}
-                    style={{ width: "600px", height: "800px" }}
+                    style={{ height: "90vh" }}
                   />
                 )}
               </AnimatePresence>

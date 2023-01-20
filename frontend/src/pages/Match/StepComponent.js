@@ -88,7 +88,7 @@ const item = {
 const StepComponent = ({ step, values, setValue, gender }) => {
   return (
     <Box mt={20}>
-      <Heading textAlign="center" color="white">
+      <Heading textAlign="center" color="white" mb={10}>
         {step}
       </Heading>
       <HStack spacing={2} display="flex" justifyContent="center" alignItems="center">
@@ -104,7 +104,7 @@ const StepComponent = ({ step, values, setValue, gender }) => {
             initial={{ x: -1000, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -1000, opacity: 0 }}
-            style={{ width: "300px", height: "500px" }}
+            style={{ width: "20%", height: "30%" }}
             key={step}
           />
         </AnimatePresence>
@@ -128,7 +128,7 @@ const StepComponent = ({ step, values, setValue, gender }) => {
             initial={{ x: 1000, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 1000, opacity: 0 }}
-            style={{ width: "300px", height: "500px" }}
+            style={{ width: "30%", height: "30%" }}
             key={step}
           />
         </AnimatePresence>

@@ -2,6 +2,7 @@ import { Box, Card, CardBody, CardHeader, Heading, Flex, HStack, Text } from "@c
 import { Suspense } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { About } from "../../constants/paths";
 
 const Container = styled.section`
   width: 100%;
@@ -95,8 +96,8 @@ const AboutPage = () => {
           alignItems="center"
           top="10rem"
           bg="black"
-          left="5rem"
-          right="5rem"
+          left="1rem"
+          right="1rem"
         >
           <Card bg="black">
             <CardHeader>
@@ -118,25 +119,19 @@ const AboutPage = () => {
                     t
                   </motion.h2>
                 </div>
-                {/* <motion.h2
-          style={{ alignSelf: "flex-end" }}
-          variants={item}
-          data-scroll
-          data-scroll-delay="0.04"
-          data-scroll-speed="2"
-        >
-          Dress the part!
-          
-        </motion.h2> */}
               </Title>
             </CardHeader>
-            {/* <CardHeader>About</CardHeader> */}
-            <HStack spacing={2} display="flex" justifyContent="center" alignItems="center">
-              <motion.div animate={{ y: [0, 150, 0, 150, 0] }} transition={{ duration: 5 }}>
-                <motion.div transition={{ duration: 3 }} whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.1 }}>
-                  <img src="/Agnes.svg" />
-                </motion.div>
-              </motion.div>
+
+            <HStack display="flex" justifyContent="center" alignItems="center">
+              <motion.img
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 3 }}
+                whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
+                src={About["Agnes"]}
+                style={{ width: "300px", height: "500px" }}
+              />
+
               <CardBody>
                 <Text color="white">
                   WHEN IS A PLAINTIFF ENTITLED TO RECOVER? A. A plaintiff who was injured as as result of some negligent
@@ -146,11 +141,15 @@ const AboutPage = () => {
                   doing of something which a reasonably prudent person would not do, or the failure to do something
                 </Text>
               </CardBody>
-              <motion.div animate={{ y: [0, 150, 0, 150, 0] }} transition={{ duration: 5 }}>
-                <motion.div transition={{ duration: 3 }} whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.1 }}>
-                  {/* <img src="/batman1.png" /> */}
-                </motion.div>
-              </motion.div>
+
+              <motion.img
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 3 }}
+                whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
+                src={About["Batman"]}
+                style={{ width: "450px", height: "400px" }}
+              />
             </HStack>
           </Card>
         </Flex>

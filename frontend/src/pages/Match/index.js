@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import GenderStep from "./Gender";
 import StepComponent from "./StepComponent";
-import { StepsOrder } from "../../constants/paths";
+import { StepsOrder } from "../../constants/others";
 
 const Container = styled.section`
   width: 100%;
@@ -111,8 +111,8 @@ const MatchPage = () => {
       <Suspense fallback={<h1>Loading...</h1>}>
         <DarkOverlay />
 
-        <Flex position="absolute" justifyContent="center" alignItems="center" top="8rem" left="5em" right="5em">
-          <Card bg="grey">
+        <Flex justifyContent="center" alignItems="center">
+          <Card bg="grey" mt="7em" w="90%">
             <CardHeader>
               <Title variants={container} initial="hidden" animate="show">
                 <div>

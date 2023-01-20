@@ -1,7 +1,7 @@
 import { Box, HStack, VStack } from "@chakra-ui/react";
 import { Suspense } from "react";
 import CoverVideo from "../../components/CoverVideo";
-import Disclaimer from "../../components/Disclaimer";
+import Disclaimer from "../../components/DisclaimerPopUp";
 const HomePage = () => {
   return (
     <Box>

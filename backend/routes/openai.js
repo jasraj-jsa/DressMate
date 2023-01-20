@@ -5,14 +5,15 @@ const { Configuration, OpenAIApi } = require("openai");
 /* GET home page. */
 
 router.post("/", async (req, res, next) => {
+  const { API_Key, Temperature } = req.body;
   const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: API_Key && process.env.OPENAI_API_KEY,
   });
   const openai = new OpenAIApi(configuration);
   const response = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: req.body.prompt,
-    temperature: 0.5,
+    temperature: Temperature && 0.75,
     max_tokens: 100,
   });
   res.json({

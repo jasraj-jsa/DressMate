@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
 
-import MainVideo from "../assets/DressUp.mp4";
+import MainVideo from "../../assets/DressUp.mp4";
 
 const VideoContainer = styled.section`
   width: 100%;

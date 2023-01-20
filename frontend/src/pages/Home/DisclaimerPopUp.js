@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import styled from "styled-components";
 import { animate, motion } from "framer-motion";
-import { Disclaimer } from "../constants/paths";
+import { DisclaimerPaths } from "../../constants/paths";
 
 const Container = styled.div`
   position: absolute;
@@ -74,7 +74,7 @@ const DisclaimerPopUp = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 3 }}
               whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
-              src={Disclaimer["Coder"]}
+              src={DisclaimerPaths["Coder"]}
               style={{ width: "300px", height: "500px" }}
             />
             <ModalBody>
@@ -91,7 +91,7 @@ const DisclaimerPopUp = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 3 }}
               whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
-              src={Disclaimer["Voldemort"]}
+              src={DisclaimerPaths["Voldemort"]}
               style={{ width: "300px", height: "500px" }}
             />
           </HStack>

@@ -1,8 +1,10 @@
+import { useDisclosure, Link } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import styled from "styled-components";
+import ConfigComponent from "../pages/ConfigComponent";
 
 const NavContainer = styled(motion.div)`
   position: absolute;
@@ -91,6 +93,8 @@ const Navbar = () => {
     });
   };
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <NavContainer
       click={+click}
@@ -103,15 +107,28 @@ const Navbar = () => {
           <span>MENU</span>
         </MenuBtn>
         <Item whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }}>
-          {/* onClick={() => handleScroll("#home")} */} <Link to="/">Home</Link>
+          {/* onClick={() => handleScroll("#home")} */}{" "}
+          <Link href="/" _hover={{ textDecoration: "none" }}>
+            Home
+          </Link>
         </Item>
         <Item whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }}>
           {/* onClick={() => handleScroll(".about")} */}
-          <Link to="/match">Match</Link>
+          <Link href="/match" _hover={{ textDecoration: "none" }}>
+            Match
+          </Link>
         </Item>
         <Item whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }}>
           {/* onClick={() => handleScroll("#shop")} */}
-          <Link to="/about">About</Link>
+          <Link href="/about" _hover={{ textDecoration: "none" }}>
+            About
+          </Link>
+        </Item>
+
+        <Item whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }} onClick={onOpen}>
+          {/* onClick={() => handleScroll("#shop")} */}
+          <Link _hover={{ textDecoration: "none" }}>Config</Link>
+          <ConfigComponent isOpen={isOpen} onClose={onClose} />
         </Item>
 
         <Item

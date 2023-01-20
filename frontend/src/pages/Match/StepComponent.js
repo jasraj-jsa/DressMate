@@ -3,7 +3,9 @@ import { Suspense, useRef } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import FormComponent from "../../components/FormComponent";
-import { Steps } from "../../constants/paths";
+import { StepPaths } from "../../constants/paths";
+import { getRandomElement } from "../../utils";
+import { StepsContent, StepsHelperText } from "../../constants/content";
 
 const Container = styled.section`
   width: 100%;
@@ -94,7 +96,7 @@ const StepComponent = ({ step, values, setValue, gender }) => {
       <HStack spacing={2} display="flex" justifyContent="center" alignItems="center">
         <AnimatePresence mode="wait">
           <motion.img
-            src={Steps[step][gender][0]}
+            src={StepPaths[step][gender][0]}
             whileHover={{
               y: [0, 80, 0, 80, 0],
               scale: 1.2,
@@ -109,8 +111,8 @@ const StepComponent = ({ step, values, setValue, gender }) => {
           />
         </AnimatePresence>
         <FormComponent
-          label="Are you planning on wearing a headgear? If so, what type of headgear are you interested in wearing?"
-          helperText="Examples: White beanie, red and black cap, beige felted hat, bucket hat, green fedora, cloche, boater, pink crochet, etc"
+          label={getRandomElement(StepsContent[step][gender])}
+          helperText={StepsHelperText[step][gender]}
           type="text"
           values={values}
           key={step}
@@ -118,7 +120,7 @@ const StepComponent = ({ step, values, setValue, gender }) => {
         />
         <AnimatePresence mode="wait">
           <motion.img
-            src={Steps[step][gender][1]}
+            src={StepPaths[step][gender][1]}
             whileHover={{
               y: [0, 80, 0, 80, 0],
               scale: 1.2,

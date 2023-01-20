@@ -2,7 +2,8 @@ import { Box, Card, CardBody, CardHeader, Heading, Flex, HStack, Text } from "@c
 import { Suspense } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { About } from "../../constants/paths";
+import { AboutPaths } from "../../constants/paths";
+import { AboutPageContent } from "../../constants/content";
 
 const Container = styled.section`
   width: 100%;
@@ -128,18 +129,12 @@ const AboutPage = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 3 }}
                 whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
-                src={About["Agnes"]}
+                src={AboutPaths["Agnes"]}
                 style={{ width: "300px", height: "500px" }}
               />
 
               <CardBody>
-                <Text color="white">
-                  WHEN IS A PLAINTIFF ENTITLED TO RECOVER? A. A plaintiff who was injured as as result of some negligent
-                  conduct on the part of a defendant is entitled to recover compensation for such injury from that
-                  defendant.A plaintiff is entitled to a verdict if jury finds1. That a defendant was negligent, and2.
-                  That such negligence was a cause of injury to the plaintiff. Q. WHAT IS NEGLIGENCE? Negligence is the
-                  doing of something which a reasonably prudent person would not do, or the failure to do something
-                </Text>
+                <Text color="white">{AboutPageContent}</Text>
               </CardBody>
 
               <motion.img
@@ -147,7 +142,7 @@ const AboutPage = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 3 }}
                 whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
-                src={About["Batman"]}
+                src={AboutPaths["Batman"]}
                 style={{ width: "450px", height: "400px" }}
               />
             </HStack>

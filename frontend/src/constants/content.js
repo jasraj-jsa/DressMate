@@ -1,7 +1,7 @@
-export const AboutPage =
+export const AboutPageContent =
   "Welcome to our website! We understand that getting dressed in the morning can be a real struggle, especially when you're trying to coordinate your outfit like Batman trying to match his cape with his cowl and sometimes it can sometimes it feels like you're playing a game of \"Outfit Roulette\". We understand that sometimes, even with the best intentions, fashion faux pas can happen.  But don't worry, we've got your back. \n\n Our website is designed to help you put together the perfect look, whether you're going for a casual, everyday look or a more formal, dressed-up style. But let's be real, matching your clothes is only half the battle.  The real key to pulling off an outfit is confidence. But just like Batman and Agnes, you too can pull off any look with the right attitude and a sense of humor. \n So, come on in and start matching your outfits like a pro. Remember, with the right clothes and the right attitude, you can take on the world!";
 
-export const DressMateSelection = ["Choose your dress mate", "Who do you relate to more?"];
+export const SelectionContent = ["Choose your dress mate", "Who do you relate to more?"];
 
 export const StepsContent = {
   Headwear: {
@@ -51,6 +51,29 @@ export const StepsContent = {
       "Are you a fearless adventurer like Anna, or are you more of a 'paint with all the colors of the wind' kind of Rapunzel? Tell us your plans so we can match your outfit accordingly.",
       "Are you feeling like a boss lady like Elsa, ready to take on the world? Or are you more of a 'singing in the tower' kind of Rapunzel? Give us the scoop so we can match your outfit to your mood.",
     ],
+  },
+};
+
+export const StepsHelperText = {
+  Headwear: {
+    Male: "Examples: Black baseball cap, Grey beanie, Blue snapback, Green bucket hat, Khaki safari hat, Orange bandana, etc.",
+    Female:
+      "Examples: Red beret, Black fedora, Pink sun hat, White wide-brimmed hat, Green beanie, Yellow headscarf, etc.",
+  },
+  Outfit: {
+    Male: "Examples: Blue Jeans and White T-shirt, Black Suit and Tie, Gray Sweater and Black Pants, Red Hoodie and White Trousers, Navy Blue Blazer and Khaki Pants, etc.",
+    Female:
+      "Examples: Red blouse and denim jeans, Striped sweater and midi skirt, Light blue button-up shirt and white shorts, Black tank top and plaid mini skirt, Grey sweater and black leggings, etc.",
+  },
+  FootAcc: {
+    Male: "Examples: Black leather dress shoes, Blue canvas espadrilles, Black leather boots, White sneakers, Brown suede loafers, Red and yellow scarf, etc.",
+    Female:
+      "Examples: Black high heels, Silver stiletto pumps, White canvas sneakers with pink laces, Metallic platform sneakers, Gold strappy sandals, Gold bracelet, etc.",
+  },
+  Occasion: {
+    Male: "Examples: Formal events, Business settings, Casual outings, Outdoor activities, Cocktail parties, Festivals or concerts, Traveling, etc.",
+    Female:
+      "Examples: Formal events, Business settings, Casual outings, Outdoor activities, Cocktail parties, Festivals or concerts, Traveling, etc.",
   },
 };
 

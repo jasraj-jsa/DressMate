@@ -1,18 +1,18 @@
 const BasePath = "/assets";
 
-export const Disclaimer = {
+export const DisclaimerPaths = {
   Coder: `${BasePath}/Disclaimer/Coder.svg`,
   Voldemort: `${BasePath}/Disclaimer/Voldemort.svg`,
 };
 
-export const About = { Agnes: `${BasePath}/About/Agnes1.svg`, Batman: `${BasePath}/About/Batman2.svg` };
+export const AboutPaths = { Agnes: `${BasePath}/About/Agnes1.svg`, Batman: `${BasePath}/About/Batman2.svg` };
 
 export const Gender = {
   Male: [`${BasePath}/Gender/batman1.svg`, `${BasePath}/Gender/batman2.svg`],
   Female: [`${BasePath}/Gender/Agnes.svg`, `${BasePath}/Gender/Agnes1.svg`],
 };
 
-export const Steps = {
+export const StepPaths = {
   Headwear: {
     Male: [`${BasePath}/Headwear/Minion1.svg`, `${BasePath}/Headwear/beanie.svg`],
     Female: [`${BasePath}/Headwear/Edith1.svg`, `${BasePath}/Headwear/beanie1.svg`],

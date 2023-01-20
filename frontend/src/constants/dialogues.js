@@ -1,4 +1,4 @@
-export const Gender = {
+export const GenderDialogues = {
   Male: [
     {
       name: "Batman",
@@ -43,7 +43,7 @@ export const Gender = {
   ],
 };
 
-export const Steps = {
+export const StepDialgoues = {
   Headwear: {
     Male: [
       { name: "Stuart the Minion", dialogues: ["BANANA!", "Banana! Pwahaha!"] },
@@ -112,7 +112,10 @@ export const Steps = {
           "My boots? The ultimate combination of style and swagger, perfect for any heroic adventure",
         ],
       },
-      `${BasePath}/FootAcc/Acc.svg`,
+      {
+        name: "Accessories",
+        dialogues: [],
+      },
     ],
     Female: [
       {
@@ -123,7 +126,10 @@ export const Steps = {
           "My boots are my trusty sidekicks, always there for me through thick and thin and ready to take on any adventure.",
         ],
       },
-      `${BasePath}/FootAcc/Footwear.svg`,
+      {
+        name: "Accessories",
+        dialogues: [],
+      },
     ],
   },
   Occasion: {

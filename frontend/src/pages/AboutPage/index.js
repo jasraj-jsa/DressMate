@@ -1,13 +1,14 @@
-import { Box, Card, CardBody, CardHeader, Heading, Flex, HStack, Text } from "@chakra-ui/react";
+import { Box, Card, CardBody, CardHeader, Heading, Flex, HStack, Text, Grid, GridItem } from "@chakra-ui/react";
 import { Suspense } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { AboutPaths } from "../../constants/paths";
 import { AboutPageContent } from "../../constants/content";
+import { AboutStyles } from "../../constants/styles";
 
 const Container = styled.section`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   video {
     width: 100%;
@@ -92,15 +93,14 @@ const AboutPage = () => {
         <DarkOverlay />
 
         <Flex
-          position="absolute"
+          // position="absolute"
           justifyContent="center"
           alignItems="center"
-          top="10rem"
-          bg="black"
-          left="1rem"
-          right="1rem"
+          // top="6rem"
+          // left="1rem"
+          // right="1rem"
         >
-          <Card bg="black">
+          <Card bg="black" mt="8%" w="90%">
             <CardHeader>
               <Title variants={container} initial="hidden" animate="show">
                 <div>
@@ -123,29 +123,33 @@ const AboutPage = () => {
               </Title>
             </CardHeader>
 
-            <HStack display="flex" justifyContent="center" alignItems="center">
-              <motion.img
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 3 }}
-                whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
-                src={AboutPaths["Agnes"]}
-                style={{ width: "300px", height: "500px" }}
-              />
-
-              <CardBody>
-                <Text color="white">{AboutPageContent}</Text>
-              </CardBody>
-
-              <motion.img
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 3 }}
-                whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
-                src={AboutPaths["Batman"]}
-                style={{ width: "450px", height: "400px" }}
-              />
-            </HStack>
+            <CardBody>
+              <Grid templateColumns="repeat(6, 1fr)" mt="3%">
+                <GridItem w="100%" display="flex" justifyContent="flex-start" alignItems="center" colSpan={2}>
+                  <motion.img
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 3 }}
+                    whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
+                    src={AboutPaths["Agnes"]}
+                    style={AboutStyles["Agnes"]}
+                  />
+                </GridItem>
+                <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={3}>
+                  <Text color="white">{AboutPageContent}</Text>
+                </GridItem>
+                <GridItem w="100%" display="flex" justifyContent="flex-end" alignItems="center" colSpan={1}>
+                  <motion.img
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 3 }}
+                    whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.5 }}
+                    src={AboutPaths["Batman"]}
+                    style={AboutStyles["Batman"]}
+                  />
+                </GridItem>
+              </Grid>
+            </CardBody>
           </Card>
         </Flex>
       </Suspense>

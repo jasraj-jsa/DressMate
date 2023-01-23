@@ -125,7 +125,14 @@ const Navbar = () => {
           </Link>
         </Item>
 
-        <Item whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }} onClick={onOpen}>
+        <Item
+          whileHover={{ scale: 1.1, y: -5 }}
+          whileTap={{ scale: 0.9, y: 0 }}
+          onClick={() => {
+            onOpen();
+            setClick(false);
+          }}
+        >
           {/* onClick={() => handleScroll("#shop")} */}
           <Link _hover={{ textDecoration: "none" }}>Config</Link>
           <ConfigComponent isOpen={isOpen} onClose={onClose} />

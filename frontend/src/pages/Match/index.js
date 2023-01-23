@@ -106,13 +106,15 @@ const MatchPage = () => {
     if (key in formValues) setFormValues((values) => ({ ...values, [key]: value }));
   };
 
+  const handleSubmit = () => {};
+
   return (
     <Container>
       <Suspense fallback={<h1>Loading...</h1>}>
         <DarkOverlay />
 
         <Flex justifyContent="center" alignItems="center">
-          <Card bg="grey" mt="7em" w="90%">
+          <Card bg="grey" mt="8%" w="90%">
             <CardHeader>
               <Title variants={container} initial="hidden" animate="show">
                 <div>
@@ -137,18 +139,16 @@ const MatchPage = () => {
             <CardBody>
               {currentStep === 0 && <GenderStep value={formValues["gender"]} setValue={setValue} onNext={nextStep} />}
               {currentStep > 0 && (
-                <>
-                  <StepComponent
-                    step={StepsOrder[currentStep]}
-                    values={formValues}
-                    setValue={setValue}
-                    gender={formValues["gender"]}
-                  />
-                  <ButtonGroup display="flex" justifyContent="center" alignItems="center" mt={10} spacing={20}>
-                    <Button onClick={previousStep}>Previous</Button>
-                    {currentStep < StepsOrder.length - 1 && <Button onClick={nextStep}>Next</Button>}
-                  </ButtonGroup>
-                </>
+                <StepComponent
+                  step={StepsOrder[currentStep]}
+                  values={formValues}
+                  setValue={setValue}
+                  gender={formValues["gender"]}
+                  onPrev={previousStep}
+                  onNext={nextStep}
+                  last={currentStep >= StepsOrder.length - 1}
+                  handleSubmit={handleSubmit}
+                />
               )}
             </CardBody>
           </Card>

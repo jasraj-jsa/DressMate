@@ -47,7 +47,7 @@ export const StepDialgoues = {
   Headwear: {
     Male: [
       { name: "Stuart the Minion", dialogues: ["BANANA!", "Banana! Pwahaha!"] },
-      { name: "Beanies", dialogues: [] },
+      { name: "Beanies", dialogues: ["Beanies"] },
     ],
     Female: [
       {
@@ -59,7 +59,7 @@ export const StepDialgoues = {
           "I always knew I was born to stand out—especially with my signature headwear!",
         ],
       },
-      { name: "Hats", dialogues: [] },
+      { name: "Hats", dialogues: ["Hats"] },
     ],
   },
   Outfit: {

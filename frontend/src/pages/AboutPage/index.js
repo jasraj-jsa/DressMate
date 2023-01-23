@@ -119,7 +119,7 @@ const AboutPage = () => {
                 <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
                   <Text color="white" dangerouslySetInnerHTML={{ __html: AboutPageContent.replace(/\n/g, "<br />") }} />
                 </GridItem>
-                <GridItem w="100%" display="flex" justifyContent="center" alignItems="center">
+                <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
                   <motion.img
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}

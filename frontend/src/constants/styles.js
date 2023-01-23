@@ -4,8 +4,14 @@ export const DisclaimerStyles = {
 };
 
 export const AboutStyles = {
-  Agnes: { maxHeight: "70%" },
-  Batman: { height: "60%", width: "100%" },
+  Agnes: { maxWidth: "85%" },
+  Batman: { maxWidth: "100%" },
+};
+
+export const GenderStyles = {
+  Selected: { maxHeight: "80%" },
+  Male: { maxWidth: "52%" },
+  Female: { maxWidth: "100%" },
 };
 
 export const StepStyles = {

@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Gender } from "../../constants/paths";
 import { SelectionContent } from "../../constants/content";
 import { GenderDialogues } from "../../constants/dialogues";
+import { GenderStyles } from "../../constants/styles";
 import { getRandomElement } from "../../utils";
 
 const GenderStep = ({ value, setValue, onNext }) => {
@@ -41,7 +42,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
               }}
               exit={{ x: -1000, opacity: 0 }}
               src={Gender[value][1]}
-              style={{ maxHeight: "80%" }}
+              style={GenderStyles["Selected"]}
             />
           </AnimatePresence>
         </VStack>
@@ -68,7 +69,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: -1000, opacity: 0 }}
                     src={Gender["Female"][0]}
-                    style={{ maxWidth: "100%", maxHeight: "100%" }}
+                    style={GenderStyles["Female"]}
                     onClick={() => {
                       setValue("Gender", "Female");
                     }}
@@ -76,7 +77,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                 </AnimatePresence>
               </VStack>
             </GridItem>
-            <GridItem display="flex" justifyContent="center" alignItems="center" mt="60%" colSpan={1}>
+            <GridItem display="flex" justifyContent="center" alignItems="center" colSpan={1}>
               {value === null && (
                 <Heading as="h1" textAlign="center">
                   {getRandomElement(SelectionContent)}
@@ -103,7 +104,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                       transition: { repeat: "once", y: { repeat: Infinity, duration: 1.5 } },
                     }}
                     src={Gender["Male"][0]}
-                    style={{ maxWidth: "50%" }}
+                    style={GenderStyles["Male"]}
                     onClick={() => {
                       setValue("Gender", "Male");
                     }}

@@ -5,7 +5,7 @@ export const DisclaimerPaths = {
   Voldemort: `${BasePath}/Disclaimer/Voldemort.svg`,
 };
 
-export const AboutPaths = { Agnes: `${BasePath}/About/Agnes1.svg`, Batman: `${BasePath}/About/Batman2.png` };
+export const AboutPaths = { Agnes: `${BasePath}/About/Agnes1.svg`, Batman: `${BasePath}/About/Batman2.svg` };
 
 export const Gender = {
   Male: [`${BasePath}/Gender/batman1.svg`, `${BasePath}/Gender/batman2.svg`],

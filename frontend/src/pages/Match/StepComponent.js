@@ -1,11 +1,7 @@
 import {
   Box,
-  Card,
-  CardBody,
-  CardHeader,
   Heading,
-  Flex,
-  HStack,
+  Icon,
   Text,
   VStack,
   Grid,
@@ -16,6 +12,9 @@ import {
   FormLabel,
   Input,
   ButtonGroup,
+  Tooltip,
+  Switch,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
@@ -24,6 +23,8 @@ import { getRandomElement } from "../../utils";
 import { StepsContent, StepsHelperText } from "../../constants/content";
 import { StepDialgoues } from "../../constants/dialogues";
 import { StepStyles } from "../../constants/styles";
+import { GrPrevious, GrNext } from "react-icons/gr";
+import { useMemo, useState } from "react";
 
 const Container = styled.section`
   width: 100%;
@@ -106,92 +107,142 @@ const item = {
 };
 
 const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, handleSubmit }) => {
-  const label = getRandomElement(StepsContent[step][gender]);
+  const label = useMemo(() => getRandomElement(StepsContent[step][gender]), [step, gender]);
+  const dialogues = useMemo(
+    () => [
+      getRandomElement(StepDialgoues[step][gender][0]["dialogues"]),
+      getRandomElement(StepDialgoues[step][gender][1]["dialogues"]),
+    ],
+    [step, gender]
+  );
   const helperText = StepsHelperText[step][gender];
+  const handleSuggestionChange = (event) => {
+    const suggestions = values["Suggestions"];
+    if (event.target.checked) {
+      if (!suggestions.includes(step)) setValue("Suggestions", [...suggestions, step]);
+    } else {
+      if (suggestions.includes(step))
+        setValue(
+          "Suggestions",
+          suggestions.filter((ele) => ele !== step)
+        );
+    }
+  };
+
+  const handleNext = () => {
+    onNext();
+  };
+
   return (
     <Box mt={20}>
       <Heading textAlign="center" color="white" mb={10}>
         {step}
       </Heading>
-      <Grid templateColumns="repeat(5, 1fr)" gap={3} mb={5}>
-        <GridItem colSpan={2} display="flex" justifyContent="center" alignItems="flex-start">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 3 } }}>
-            <Box rounded="lg" p={4} bg="gray.800" color="white">
-              <Text>{getRandomElement(StepDialgoues[step][gender][0]["dialogues"])}</Text>
-            </Box>
-          </motion.div>
+      <Grid templateColumns="repeat(6, 1fr)" gap={3} mb={5}>
+        <GridItem colSpan={2} display="flex" justifyContent="center" alignItems="center">
+          <VStack spacing={10}>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 3 } }}>
+              <Box rounded="lg" p={4} bg="gray.800" color="white">
+                <Text>{dialogues[0]}</Text>
+              </Box>
+            </motion.div>
+            <AnimatePresence mode="wait">
+              <motion.img
+                src={StepPaths[step][gender][0]}
+                whileHover={{
+                  y: [0, 80, 0, 80, 0],
+                  scale: 1.2,
+                  transition: { repeat: "once", y: { repeat: Infinity, duration: 1.5 } },
+                }}
+                transition={{ x: { duration: 2 }, opacity: { duration: 2 } }}
+                initial={{ x: -1000, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -1000, opacity: 0 }}
+                key={step}
+                style={StepStyles[step][gender][0]}
+              />
+            </AnimatePresence>
+          </VStack>
         </GridItem>
-        <GridItem colStart={4} colEnd={6} display="flex" justifyContent="center" alignItems="flex-start">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 3 } }}>
-            <Box rounded="lg" p={4} bg="gray.800" color="white">
-              <Text>{getRandomElement(StepDialgoues[step][gender][1]["dialogues"])}</Text>
-            </Box>
-          </motion.div>
-        </GridItem>
-      </Grid>
-
-      <Grid templateColumns="repeat(3, 1fr)" gap={6}>
-        <GridItem w="100%" display="flex" justifyContent="center" alignItems="flex-start">
-          <AnimatePresence mode="wait">
-            <motion.img
-              src={StepPaths[step][gender][0]}
-              whileHover={{
-                y: [0, 80, 0, 80, 0],
-                scale: 1.2,
-                transition: { repeat: "once", y: { repeat: Infinity, duration: 1.5 } },
-              }}
-              transition={{ x: { duration: 2 }, opacity: { duration: 2 } }}
-              initial={{ x: -1000, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -1000, opacity: 0 }}
-              key={step}
-              style={StepStyles[step][gender][0]}
-            />
-          </AnimatePresence>
-        </GridItem>
-
-        <GridItem w="100%" display="flex" justifyContent="center" alignItems="flex-start" mt="50%">
+        <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" mt="40%" colSpan={2}>
           <VStack spacing={10}>
             <FormControl textColor="white">
               <FormLabel>{label}</FormLabel>
               <Input
-                type="string"
-                value={values[step]}
-                onChange={(evt) => {
-                  setValue(step, evt.target.value);
+                value={values[step] || ""}
+                onChange={(event) => {
+                  setValue(step, event.target.value);
                 }}
               />
               <FormHelperText>{helperText}</FormHelperText>
             </FormControl>
             <FormControl display="flex" justifyContent="center" alignItems="center">
-              <ButtonGroup spacing={5}>
-                <Button onClick={onPrev}>Previous</Button>
-                <Button>Suggest</Button>
-                {last ? <Button onClick={handleSubmit}>Submit</Button> : <Button onClick={onNext}>Next</Button>}
+              <FormLabel htmlFor="suggestion">Need suggestion?</FormLabel>
+              <Switch
+                id="suggestion"
+                onChange={handleSuggestionChange}
+                isChecked={values["Suggestions"].includes(step)}
+                size="lg"
+              />
+            </FormControl>
+            <FormControl display="flex" justifyContent="center" alignItems="center">
+              <ButtonGroup spacing="30%">
+                <Tooltip label="Previous">
+                  <Button onClick={onPrev} variant="outline" rounded="full" colorScheme="cyan" size="lg">
+                    <Icon as={GrPrevious} size="lg" />
+                  </Button>
+                </Tooltip>
+                {last ? (
+                  <Button onClick={handleSubmit}>Submit</Button>
+                ) : (
+                  <Tooltip label="Next">
+                    <Button onClick={handleNext} variant="outline" rounded="full" colorScheme="cyan" size="lg">
+                      <Icon as={GrNext} size="lg" />
+                    </Button>
+                  </Tooltip>
+                )}
               </ButtonGroup>
             </FormControl>
           </VStack>
         </GridItem>
-
-        <GridItem w="100%" display="flex" justifyContent="center" alignItems="flex-start">
-          <AnimatePresence mode="wait">
-            <motion.img
-              src={StepPaths[step][gender][1]}
-              whileHover={{
-                y: [0, 80, 0, 80, 0],
-                scale: 1.2,
-                transition: { repeat: "once", y: { repeat: Infinity, duration: 1.5 } },
-              }}
-              transition={{ x: { duration: 2 }, opacity: { duration: 2 } }}
-              initial={{ x: 1000, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 1000, opacity: 0 }}
-              style={StepStyles[step][gender][1]}
-              key={step}
-            />
-          </AnimatePresence>
+        <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
+          <VStack spacing={10}>
+            {step !== "Headwear" && step !== "FootAcc" && (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 3 } }}>
+                <Box rounded="lg" p={4} bg="gray.800" color="white">
+                  <Text>{dialogues[1]}</Text>
+                </Box>
+              </motion.div>
+            )}
+            <AnimatePresence mode="wait">
+              <motion.img
+                src={StepPaths[step][gender][1]}
+                whileHover={{
+                  y: [0, 80, 0, 80, 0],
+                  scale: 1.2,
+                  transition: { repeat: "once", y: { repeat: Infinity, duration: 1.5 } },
+                }}
+                transition={{ x: { duration: 2 }, opacity: { duration: 2 } }}
+                initial={{ x: 1000, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 1000, opacity: 0 }}
+                style={StepStyles[step][gender][1]}
+                key={step}
+              />
+            </AnimatePresence>
+          </VStack>
         </GridItem>
       </Grid>
+
+      {/* <Grid templateColumns="repeat(3, 1fr)" gap={6}> */}
+      {/* <GridItem w="100%" display="flex" justifyContent="center" alignItems="flex-start">
+         
+        </GridItem> */}
+
+      {/* <GridItem w="100%" display="flex" justifyContent="center" alignItems="flex-start"> */}
+
+      {/* </GridItem> */}
+      {/* </Grid> */}
     </Box>
   );
 };

@@ -13,14 +13,14 @@ import {
   ModalOverlay,
   VStack,
 } from "@chakra-ui/react";
-import { useRef } from "react";
+import { useState } from "react";
 
 const ConfigComponent = ({ isOpen, onClose }) => {
-  const APIKey = useRef(localStorage.getItem("API_Key") || "");
-  const Temperature = useRef(localStorage.getItem("Temperature") || "");
+  const [apiKey, setAPIKey] = useState(localStorage.getItem("API_Key") || "");
+  const [temperature, setTemperature] = useState(localStorage.getItem("Temperature") || "");
   const updateConfig = () => {
-    localStorage.setItem("API_Key", APIKey.current);
-    localStorage.setItem("Temperature", Temperature.current);
+    if (apiKey) localStorage.setItem("API_Key", apiKey);
+    if (temperature) localStorage.setItem("Temperature", temperature);
     onClose();
   };
   return (
@@ -33,11 +33,11 @@ const ConfigComponent = ({ isOpen, onClose }) => {
           <VStack spacing={5}>
             <FormControl>
               <FormLabel>API Key</FormLabel>
-              <Input type="string" ref={APIKey} />
+              <Input type="string" value={apiKey} onChange={(event) => setAPIKey(event.target.value)} />
             </FormControl>
             <FormControl>
               <FormLabel>Temperature</FormLabel>
-              <Input type="number" ref={Temperature} />
+              <Input type="number" value={temperature} onChange={(event) => setTemperature(event.target.value)} />
             </FormControl>
           </VStack>
         </ModalBody>

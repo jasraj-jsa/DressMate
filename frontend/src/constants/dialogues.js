@@ -1,3 +1,9 @@
+export const DisclaimerDialogues = {
+  Coder: "I don't know what's in style, but I know what looks good on me - sweatpants and a stained t-shirt!",
+  Voldemort:
+    "Why is everyone always so intimidated by my Death Eaters' masks? They're just plain black, no flair at all.",
+};
+
 export const GenderDialogues = {
   Male: [
     {
@@ -47,7 +53,7 @@ export const StepDialgoues = {
   Headwear: {
     Male: [
       { name: "Stuart the Minion", dialogues: ["BANANA!", "Banana! Pwahaha!"] },
-      { name: "Beanies", dialogues: ["Beanies"] },
+      { name: "Beanies", dialogues: [] },
     ],
     Female: [
       {
@@ -59,7 +65,7 @@ export const StepDialgoues = {
           "I always knew I was born to stand out—especially with my signature headwear!",
         ],
       },
-      { name: "Hats", dialogues: ["Hats"] },
+      { name: "Hats", dialogues: [] },
     ],
   },
   Outfit: {

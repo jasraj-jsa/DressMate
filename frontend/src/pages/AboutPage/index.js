@@ -9,18 +9,6 @@ import { AboutStyles } from "../../constants/styles";
 const Container = styled.section`
   width: 100%;
   min-height: 100vh;
-  position: relative;
-  video {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    @media (max-width: 48em) {
-      object-position: center 10%;
-    }
-    @media (max-width: 30em) {
-      object-position: center 50%;
-    }
-  }
 `;
 
 const DarkOverlay = styled.div`
@@ -92,15 +80,8 @@ const AboutPage = () => {
       <Suspense fallback={<h1>Loading...</h1>}>
         <DarkOverlay />
 
-        <Flex
-          // position="absolute"
-          justifyContent="center"
-          alignItems="center"
-          // top="6rem"
-          // left="1rem"
-          // right="1rem"
-        >
-          <Card bg="black" mt="8%" w="90%">
+        <Flex justifyContent="center" alignItems="center">
+          <Card bg="black" w="95%" size="lg" mt="8%">
             <CardHeader>
               <Title variants={container} initial="hidden" animate="show">
                 <div>
@@ -124,8 +105,8 @@ const AboutPage = () => {
             </CardHeader>
 
             <CardBody>
-              <Grid templateColumns="repeat(6, 1fr)" mt="3%">
-                <GridItem w="100%" display="flex" justifyContent="flex-start" alignItems="center" colSpan={2}>
+              <Grid templateColumns="repeat(4, 1fr)" mt={20} mb={10}>
+                <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
                   <motion.img
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -135,10 +116,10 @@ const AboutPage = () => {
                     style={AboutStyles["Agnes"]}
                   />
                 </GridItem>
-                <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={3}>
-                  <Text color="white">{AboutPageContent}</Text>
+                <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
+                  <Text color="white" dangerouslySetInnerHTML={{ __html: AboutPageContent.replace(/\n/g, "<br />") }} />
                 </GridItem>
-                <GridItem w="100%" display="flex" justifyContent="flex-end" alignItems="center" colSpan={1}>
+                <GridItem w="100%" display="flex" justifyContent="center" alignItems="center">
                   <motion.img
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}

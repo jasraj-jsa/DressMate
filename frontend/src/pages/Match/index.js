@@ -95,12 +95,12 @@ const MatchPage = () => {
     if (currentStep > 0) setCurrentStep((currentStep) => currentStep - 1);
   };
   const [formValues, setFormValues] = useState({
-    gender: null,
-    headwear: null,
-    topwear: null,
-    bottomwear: null,
-    footwear: null,
-    accessories: null,
+    Gender: null,
+    Headwear: null,
+    Outfit: null,
+    FootAcc: null,
+    Occasion: null,
+    Suggestions: [],
   });
   const setValue = (key, value) => {
     if (key in formValues) setFormValues((values) => ({ ...values, [key]: value }));
@@ -114,7 +114,7 @@ const MatchPage = () => {
         <DarkOverlay />
 
         <Flex justifyContent="center" alignItems="center">
-          <Card bg="grey" mt="8%" w="90%">
+          <Card bg="grey" mt="7%" w="95%" mb={10}>
             <CardHeader>
               <Title variants={container} initial="hidden" animate="show">
                 <div>
@@ -137,13 +137,13 @@ const MatchPage = () => {
               </Title>
             </CardHeader>
             <CardBody>
-              {currentStep === 0 && <GenderStep value={formValues["gender"]} setValue={setValue} onNext={nextStep} />}
+              {currentStep === 0 && <GenderStep value={formValues["Gender"]} setValue={setValue} onNext={nextStep} />}
               {currentStep > 0 && (
                 <StepComponent
                   step={StepsOrder[currentStep]}
                   values={formValues}
                   setValue={setValue}
-                  gender={formValues["gender"]}
+                  gender={formValues["Gender"]}
                   onPrev={previousStep}
                   onNext={nextStep}
                   last={currentStep >= StepsOrder.length - 1}

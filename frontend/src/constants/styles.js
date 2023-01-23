@@ -1,20 +1,28 @@
-export const AboutStyles = { Agnes: { maxHeight: "60%" }, Batman: { minWidth: "auto", height: "70%" } };
+export const DisclaimerStyles = {
+  Coder: { maxHeight: "100%" },
+  Voldemort: { maxHeight: "100%" },
+};
+
+export const AboutStyles = {
+  Agnes: { maxHeight: "70%" },
+  Batman: { height: "60%", width: "100%" },
+};
 
 export const StepStyles = {
   Headwear: {
-    Male: [{ maxHeight: "90%" }, { maxHeight: "90%", marginTop: "10%" }],
-    Female: [{ maxHeight: "100%" }, { maxHeight: "100%", marginTop: "15%" }],
+    Male: [{ maxWidth: "80%" }, { maxWidth: "100%", marginTop: "10%" }],
+    Female: [{ maxWidth: "90%" }, { maxWidth: "100%" }],
   },
   Outfit: {
-    Male: [{ maxHeight: "100%" }, { maxHeight: "60%" }],
-    Female: [{ maxHeight: "100%", marginTop: "30%" }, { maxHeight: "100%" }],
+    Male: [{ maxWidth: "90%" }, { maxWidth: "55%" }],
+    Female: [{ maxWidth: "100%" }, { maxWidth: "100%" }],
   },
   FootAcc: {
-    Male: [{ maxHeight: "100%" }, { maxHeight: "100%", marginTop: "20%" }],
-    Female: [{ maxHeight: "100%" }, { maxHeight: "100%", marginTop: "25%" }],
+    Male: [{ maxWidth: "100%" }, { maxWidth: "100%" }],
+    Female: [{ maxWidth: "70%" }, { maxWidth: "90%" }],
   },
   Occasion: {
-    Male: [{ maxHeight: "60%" }, { maxHeight: "60%" }],
-    Female: [{ maxHeight: "70%" }, { maxHeight: "100%" }],
+    Male: [{ maxWidth: "70%" }, { maxWidth: "50%" }],
+    Female: [{ maxWidth: "60%" }, { maxWidth: "100%" }],
   },
 };

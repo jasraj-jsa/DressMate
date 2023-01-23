@@ -10,10 +10,16 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
+  Grid,
+  GridItem,
+  VStack,
 } from "@chakra-ui/react";
 import styled from "styled-components";
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { DisclaimerPaths } from "../../constants/paths";
+import { DisclaimerDialogues } from "../../constants/dialogues";
+import { DisclaimerContent } from "../../constants/content";
+import { DisclaimerStyles } from "../../constants/styles";
 
 const Container = styled.div`
   position: absolute;
@@ -58,7 +64,7 @@ const DisclaimerPopUp = () => {
       >
         Disclaimer
       </Button>
-      <Modal isOpen={isOpen} onClose={onClose} size="6xl">
+      <Modal isOpen={isOpen} onClose={onClose} size="6xl" isCentered>
         <ModalOverlay />
         <ModalContent
           as={motion.div}
@@ -66,35 +72,51 @@ const DisclaimerPopUp = () => {
           animate={{ opacity: 1, transition: { duration: 2 } }}
           bg="red.300"
         >
-          <ModalHeader color="white">ATTENTION !!</ModalHeader>
+          <ModalHeader color="white" textAlign="center">
+            ATTENTION !!
+          </ModalHeader>
           <ModalCloseButton />
-          <HStack spacing={2} display="flex" justifyContent="center" alignItems="center" mb={20} mt={10}>
-            <motion.img
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 3 }}
-              whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
-              src={DisclaimerPaths["Coder"]}
-              style={{ width: "300px", height: "500px" }}
-            />
-            <ModalBody>
-              <Text color="white">
-                WHEN IS A PLAINTIFF ENTITLED TO RECOVER? A. A plaintiff who was injured as as result of some negligent
-                conduct on the part of a defendant is entitled to recover compensation for such injury from that
-                defendant.A plaintiff is entitled to a verdict if jury finds1. That a defendant was negligent, and2.
-                That such negligence was a cause of injury to the plaintiff. Q. WHAT IS NEGLIGENCE? Negligence is the
-                doing of something which a reasonably prudent person would not do, or the failure to do something
-              </Text>
-            </ModalBody>
-            <motion.img
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 3 }}
-              whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
-              src={DisclaimerPaths["Voldemort"]}
-              style={{ width: "300px", height: "500px" }}
-            />
-          </HStack>
+          <ModalBody mt={8}>
+            <Grid templateColumns="repeat(4, 1fr)" gap={6} mb={10}>
+              <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
+                <VStack spacing={10}>
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 3 } }}>
+                    <Box rounded="lg" p={4} bg="gray.800" color="white">
+                      <Text>{DisclaimerDialogues["Coder"]}</Text>
+                    </Box>
+                  </motion.div>
+                  <motion.img
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 3 }}
+                    whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
+                    src={DisclaimerPaths["Coder"]}
+                    style={DisclaimerStyles["Coder"]}
+                  />
+                </VStack>
+              </GridItem>
+              <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
+                <Text color="white" dangerouslySetInnerHTML={{ __html: DisclaimerContent.replace(/\n/g, "<br />") }} />
+              </GridItem>
+              <GridItem w="100%" display="flex" justifyContent="center" alignItems="center">
+                <VStack spacing={10}>
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 3 } }}>
+                    <Box rounded="lg" p={4} bg="gray.800" color="white">
+                      <Text>{DisclaimerDialogues["Voldemort"]}</Text>
+                    </Box>
+                  </motion.div>
+                  <motion.img
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 3 }}
+                    whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
+                    src={DisclaimerPaths["Voldemort"]}
+                    style={DisclaimerStyles["Voldemort"]}
+                  />
+                </VStack>
+              </GridItem>
+            </Grid>
+          </ModalBody>
         </ModalContent>
       </Modal>
     </Container>

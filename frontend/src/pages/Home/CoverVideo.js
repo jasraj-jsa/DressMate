@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
 
-import MainVideo from "../../assets/DressUp.mp4";
-
 const VideoContainer = styled.section`
   width: 100%;
   height: 100vh;
@@ -127,7 +125,7 @@ const CoverVideo = () => {
         </motion.h2>
       </Title>
 
-      <video src={MainVideo} type="video/mp4" autoPlay muted loop />
+      <video src="/assets/DressUp.mp4" type="video/mp4" autoPlay muted loop />
     </VideoContainer>
   );
 };

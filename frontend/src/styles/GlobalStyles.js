@@ -2,7 +2,6 @@ import "@fontsource/sirin-stencil";
 import "@fontsource/kaushan-script";
 
 import { createGlobalStyle } from "styled-components";
-
 const GlobalStyles = createGlobalStyle`
 
 html.has-scroll-smooth {

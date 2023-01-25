@@ -1,10 +1,24 @@
-import { Box, Card, CardBody, CardHeader, Heading, Flex, HStack, Text, Grid, GridItem } from "@chakra-ui/react";
+import {
+  Box,
+  Card,
+  CardBody,
+  CardHeader,
+  Heading,
+  Flex,
+  HStack,
+  Text,
+  Grid,
+  GridItem,
+  useStyleConfig,
+  useColorMode,
+} from "@chakra-ui/react";
 import { Suspense } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { AboutPaths } from "../../constants/paths";
 import { AboutPageContent } from "../../constants/content";
 import { AboutStyles } from "../../constants/styles";
+import { CardStyles } from "../../styles/Themes";
 
 const Container = styled.section`
   width: 100%;
@@ -30,7 +44,6 @@ const Title = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: ${(props) => props.theme.text};
   div {
     display: flex;
     flex-direction: row;
@@ -75,13 +88,14 @@ const item = {
 };
 
 const AboutPage = () => {
+  const { colorMode } = useColorMode();
   return (
     <Container>
       <Suspense fallback={<h1>Loading...</h1>}>
         <DarkOverlay />
 
         <Flex justifyContent="center" alignItems="center">
-          <Card bg="black" w="95%" size="lg" mt="8%">
+          <Card sx={CardStyles[colorMode]}>
             <CardHeader>
               <Title variants={container} initial="hidden" animate="show">
                 <div>

@@ -1,3 +1,6 @@
+import { defineStyleConfig, extendTheme, theme, useColorModeValue, useTheme } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
+
 export const light = {
   body: "#fff",
   text: "#202020", // black shade
@@ -36,4 +39,32 @@ export const dark = {
   fontBig: "10em",
 
   navHeight: "5rem",
+};
+
+export const TextStyles = {
+  light: {
+    color: light["text"],
+  },
+  dark: {
+    color: dark["text"],
+  },
+};
+
+const CardBaseStyles = {
+  w: "95%",
+  size: "lg",
+  mt: "8%",
+  mb: "2%",
+  align: "center",
+  shadow: "dark-lg",
+};
+export const CardStyles = {
+  light: {
+    ...CardBaseStyles,
+    bg: "red",
+  },
+  dark: {
+    ...CardBaseStyles,
+    bg: "green",
+  },
 };

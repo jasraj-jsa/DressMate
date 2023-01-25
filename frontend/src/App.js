@@ -1,25 +1,23 @@
 import HomePage from "./pages/Home";
-import { Routes, Route, Outlet, Link } from "react-router-dom";
-
+import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { AnimatePresence } from "framer-motion";
-import GlobalStyles from "./styles/GlobalStyles";
 import { dark, light } from "./styles/Themes";
-import { useRef, useState } from "react";
 import ModeIcon from "./components/ModeIcon";
 import MatchPage from "./pages/Match";
 import AboutPage from "./pages/AboutPage";
 import Logo from "./components/Logo";
 import Navbar from "./components/Navbar";
-
+import { useColorMode } from "@chakra-ui/react";
+import GlobalStyles from "./styles/GlobalStyles";
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <>
       <GlobalStyles />
-      <ModeIcon darkMode={darkMode} setDarkMode={setDarkMode} />
-      <ThemeProvider theme={darkMode ? dark : light}>
-        <AnimatePresence>
+      <ModeIcon mode={colorMode} toggleMode={toggleColorMode} />
+      <ThemeProvider theme={colorMode === "dark" ? dark : light}>
+        <AnimatePresence mode="wait">
           <Logo />
           <Navbar />
           <Routes>

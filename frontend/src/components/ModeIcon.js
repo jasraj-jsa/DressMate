@@ -25,18 +25,12 @@ const Container = styled.div`
   right: 3rem;
   z-index: 6;
 `;
-const ModeIcon = ({ darkMode, setDarkMode }) => {
+const ModeIcon = ({ mode, toggleMode }) => {
   return (
     <Container>
       <motion.path variants={pathVariants} initial="initial" animate="animate">
-        <Button
-          variant="outline"
-          colorScheme={darkMode ? "whiteAlpha" : "blackAlpha"}
-          onClick={() => {
-            setDarkMode(!darkMode);
-          }}
-        >
-          <Icon as={darkMode ? MdOutlineLightMode : MdOutlineDarkMode} size="lg" boxSize="1.3em" />
+        <Button variant="outline" colorScheme={mode === "dark" ? "whiteAlpha" : "blackAlpha"} onClick={toggleMode}>
+          <Icon as={mode === "dark" ? MdOutlineLightMode : MdOutlineDarkMode} size="lg" boxSize="1.3em" />
         </Button>
       </motion.path>
     </Container>

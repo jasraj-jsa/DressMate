@@ -1,10 +1,21 @@
-import { Box, Button, ButtonGroup, Card, CardBody, CardHeader, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Card,
+  CardBody,
+  CardHeader,
+  Flex,
+  useColorMode,
+  useStyleConfig,
+} from "@chakra-ui/react";
 import { useState, Suspense } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import GenderStep from "./Gender";
 import StepComponent from "./StepComponent";
 import { StepsOrder } from "../../constants/others";
+import { CardStyles } from "../../styles/Themes";
 
 const Container = styled.section`
   width: 100%;
@@ -75,7 +86,7 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      delayChildren: 1, // 2
+      delayChildren: 1,
       staggerChildren: 0.3,
     },
   },
@@ -87,6 +98,7 @@ const item = {
 };
 
 const MatchPage = () => {
+  const { colorMode } = useColorMode();
   const [currentStep, setCurrentStep] = useState(0);
   const nextStep = () => {
     if (currentStep < StepsOrder.length) setCurrentStep((currentStep) => currentStep + 1);
@@ -114,7 +126,7 @@ const MatchPage = () => {
         <DarkOverlay />
 
         <Flex justifyContent="center" alignItems="center">
-          <Card bg="grey" mt="7%" w="95%" mb={10}>
+          <Card sx={CardStyles[colorMode]}>
             <CardHeader>
               <Title variants={container} initial="hidden" animate="show">
                 <div>

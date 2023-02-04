@@ -55,7 +55,6 @@ const DisclaimerPopUp = () => {
         animate="animate"
         whileHover={{ scale: 1.3 }}
         whileTap={{ scale: 0.9 }}
-        colorScheme="red"
         bg="red.200"
         size="lg"
         variant="outline"
@@ -73,43 +72,54 @@ const DisclaimerPopUp = () => {
           bg="red.300"
         >
           <ModalHeader color="white" textAlign="center">
-            ATTENTION !!
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 3 } }}>
+              ATTENTION !!
+            </motion.div>
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody mt={8}>
             <Grid templateColumns="repeat(4, 1fr)" gap={6} mb={10}>
               <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
                 <VStack spacing={10}>
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 3 } }}>
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
+                  >
                     <Box rounded="lg" p={4} bg="gray.800" color="white">
                       <Text>{DisclaimerDialogues["Coder"]}</Text>
                     </Box>
                   </motion.div>
                   <motion.img
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 3 }}
-                    whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
+                    animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
+                    whileHover={{ scale: 1.5 }}
                     src={DisclaimerPaths["Coder"]}
                     style={DisclaimerStyles["Coder"]}
                   />
                 </VStack>
               </GridItem>
               <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
-                <Text color="white" dangerouslySetInnerHTML={{ __html: DisclaimerContent.replace(/\n/g, "<br />") }} />
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 3 } }}>
+                  <Text
+                    color="white"
+                    dangerouslySetInnerHTML={{ __html: DisclaimerContent.replace(/\n/g, "<br />") }}
+                  />
+                </motion.div>
               </GridItem>
               <GridItem w="100%" display="flex" justifyContent="center" alignItems="center">
                 <VStack spacing={10}>
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 3 } }}>
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
+                  >
                     <Box rounded="lg" p={4} bg="gray.800" color="white">
                       <Text>{DisclaimerDialogues["Voldemort"]}</Text>
                     </Box>
                   </motion.div>
                   <motion.img
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 3 }}
-                    whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
+                    animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
+                    whileHover={{ scale: 1.3 }}
                     src={DisclaimerPaths["Voldemort"]}
                     style={DisclaimerStyles["Voldemort"]}
                   />

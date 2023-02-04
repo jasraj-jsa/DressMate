@@ -12,27 +12,12 @@ import {
   useStyleConfig,
   useColorMode,
 } from "@chakra-ui/react";
-import { Suspense } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { AboutPaths } from "../../constants/paths";
 import { AboutPageContent } from "../../constants/content";
 import { AboutStyles } from "../../constants/styles";
 import { CardStyles } from "../../styles/Themes";
-
-const Container = styled.section`
-  width: 100%;
-  min-height: 100vh;
-`;
-
-const DarkOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: ${(props) => `rgba(${props.theme.bodyRgba},0.6)`};
-`;
 
 const Title = styled(motion.div)`
   position: absolute;
@@ -76,7 +61,7 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      delayChildren: 1, // 2
+      delayChildren: 1,
       staggerChildren: 0.3,
     },
   },
@@ -90,65 +75,51 @@ const item = {
 const AboutPage = () => {
   const { colorMode } = useColorMode();
   return (
-    <Container>
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <DarkOverlay />
+    <Flex justifyContent="center" alignItems="center">
+      <Card sx={CardStyles[colorMode]}>
+        <CardHeader>
+          <Title variants={container} initial="hidden" animate="show">
+            <div>
+              <motion.h2 variants={item}>A</motion.h2>
+              <motion.h2 variants={item}>b</motion.h2>
+              <motion.h2 variants={item}>o</motion.h2>
+              <motion.h2 variants={item}>u</motion.h2>
+              <motion.h2 variants={item}>t</motion.h2>
+            </div>
+          </Title>
+        </CardHeader>
 
-        <Flex justifyContent="center" alignItems="center">
-          <Card sx={CardStyles[colorMode]}>
-            <CardHeader>
-              <Title variants={container} initial="hidden" animate="show">
-                <div>
-                  <motion.h2 variants={item} data-scroll data-scroll-delay="0.13" data-scroll-speed="4">
-                    A
-                  </motion.h2>
-                  <motion.h2 variants={item} data-scroll data-scroll-delay="0.09" data-scroll-speed="4">
-                    b
-                  </motion.h2>
-                  <motion.h2 variants={item} data-scroll data-scroll-delay="0.06" data-scroll-speed="4">
-                    o
-                  </motion.h2>
-                  <motion.h2 variants={item} data-scroll data-scroll-delay="0.04" data-scroll-speed="4">
-                    u
-                  </motion.h2>
-                  <motion.h2 variants={item} data-scroll data-scroll-delay="0.13" data-scroll-speed="4">
-                    t
-                  </motion.h2>
-                </div>
-              </Title>
-            </CardHeader>
-
-            <CardBody>
-              <Grid templateColumns="repeat(4, 1fr)" mt={20} mb={10}>
-                <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
-                  <motion.img
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 3 }}
-                    whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
-                    src={AboutPaths["Agnes"]}
-                    style={AboutStyles["Agnes"]}
-                  />
-                </GridItem>
-                <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
-                  <Text color="white" dangerouslySetInnerHTML={{ __html: AboutPageContent.replace(/\n/g, "<br />") }} />
-                </GridItem>
-                <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
-                  <motion.img
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 3 }}
-                    whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.5 }}
-                    src={AboutPaths["Batman"]}
-                    style={AboutStyles["Batman"]}
-                  />
-                </GridItem>
-              </Grid>
-            </CardBody>
-          </Card>
-        </Flex>
-      </Suspense>
-    </Container>
+        <CardBody>
+          <Grid templateColumns="repeat(4, 1fr)" mt={20} mb={10}>
+            <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
+              <motion.img
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 3 }}
+                whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
+                src={AboutPaths["Agnes"]}
+                style={AboutStyles["Agnes"]}
+              />
+            </GridItem>
+            <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 3 }}>
+                <Text dangerouslySetInnerHTML={{ __html: AboutPageContent.replace(/\n/g, "<br />") }} />
+              </motion.div>
+            </GridItem>
+            <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
+              <motion.img
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 3 }}
+                whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.5 }}
+                src={AboutPaths["Batman"]}
+                style={AboutStyles["Batman"]}
+              />
+            </GridItem>
+          </Grid>
+        </CardBody>
+      </Card>
+    </Flex>
   );
 };
 

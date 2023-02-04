@@ -10,6 +10,7 @@ import Logo from "./components/Logo";
 import Navbar from "./components/Navbar";
 import { useColorMode } from "@chakra-ui/react";
 import GlobalStyles from "./styles/GlobalStyles";
+import { Container, DarkOverlay } from "./styles/GlobalComponents";
 function App() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
@@ -17,21 +18,24 @@ function App() {
       <GlobalStyles />
       <ModeIcon mode={colorMode} toggleMode={toggleColorMode} />
       <ThemeProvider theme={colorMode === "dark" ? dark : light}>
-        <AnimatePresence mode="wait">
-          <Logo />
-          <Navbar />
-          <Routes>
-            <Route path="/">
-              <Route index element={<HomePage />} />
-            </Route>
-            <Route path="/match">
-              <Route index element={<MatchPage />} />
-            </Route>
-            <Route path="/about">
-              <Route index element={<AboutPage />} />
-            </Route>
-          </Routes>
-        </AnimatePresence>
+        <Container>
+          <DarkOverlay />
+          <AnimatePresence mode="initial">
+            <Logo />
+            <Navbar />
+            <Routes>
+              <Route path="/">
+                <Route index element={<HomePage />} />
+              </Route>
+              <Route path="/match">
+                <Route index element={<MatchPage />} />
+              </Route>
+              <Route path="/about">
+                <Route index element={<AboutPage />} />
+              </Route>
+            </Routes>
+          </AnimatePresence>
+        </Container>
       </ThemeProvider>
     </>
   );

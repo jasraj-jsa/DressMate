@@ -17,32 +17,6 @@ import StepComponent from "./StepComponent";
 import { StepsOrder } from "../../constants/others";
 import { CardStyles } from "../../styles/Themes";
 
-const Container = styled.section`
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  video {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    @media (max-width: 48em) {
-      object-position: center 10%;
-    }
-    @media (max-width: 30em) {
-      object-position: center 50%;
-    }
-  }
-`;
-
-const DarkOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: ${(props) => `rgba(${props.theme.bodyRgba},0.6)`};
-`;
-
 const Title = styled(motion.div)`
   position: absolute;
   top: 0;
@@ -98,6 +72,7 @@ const item = {
 };
 
 const MatchPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { colorMode } = useColorMode();
   const [currentStep, setCurrentStep] = useState(0);
   const nextStep = () => {
@@ -118,13 +93,26 @@ const MatchPage = () => {
     if (key in formValues) setFormValues((values) => ({ ...values, [key]: value }));
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    const API_Key = localStorage.getItem("API_Key") || "";
+    const Temperature = localStorage.getItem("Temperature") || "";
+    const body = JSON.stringify({ ...formValues, API_Key, Temperature });
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: body,
+    };
+    const response = await fetch("", options);
+    const output = await response.json();
+    setIsLoading(false);
+  };
 
   return (
-    <Container>
+    <>
       <Suspense fallback={<h1>Loading...</h1>}>
-        <DarkOverlay />
-
         <Flex justifyContent="center" alignItems="center">
           <Card sx={CardStyles[colorMode]}>
             <CardHeader>
@@ -159,6 +147,7 @@ const MatchPage = () => {
                   onPrev={previousStep}
                   onNext={nextStep}
                   last={currentStep >= StepsOrder.length - 1}
+                  isLoading={isLoading}
                   handleSubmit={handleSubmit}
                 />
               )}
@@ -166,7 +155,7 @@ const MatchPage = () => {
           </Card>
         </Flex>
       </Suspense>
-    </Container>
+    </>
   );
 };
 

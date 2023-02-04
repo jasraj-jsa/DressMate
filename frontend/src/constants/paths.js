@@ -30,3 +30,8 @@ export const StepPaths = {
     Female: [`${BasePath}/Occasion/Frozen.svg`, `${BasePath}/Occasion/Tangled.svg`],
   },
 };
+
+export const ResultPaths = {
+  Mickey: `${BasePath}/Results/mickey.svg`,
+  Minions: `${BasePath}/Results/minions.svg`,
+};

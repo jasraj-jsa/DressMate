@@ -22,7 +22,7 @@ export const light = {
 };
 
 export const dark = {
-  body: "#202020",
+  body: "#000505",
   text: "#fff", // black shade
   bodyRgba: "32,32,32",
   textRgba: "255, 255, 255",
@@ -61,10 +61,12 @@ const CardBaseStyles = {
 export const CardStyles = {
   light: {
     ...CardBaseStyles,
-    bg: "red",
+    bg: "#2660A4",
+    color: "#000505",
   },
   dark: {
     ...CardBaseStyles,
-    bg: "green",
+    bg: "#2A9D8F",
+    color: "#F7F7FF",
   },
 };

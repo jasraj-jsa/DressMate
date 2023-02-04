@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Button, Icon } from "@chakra-ui/react";
+import { Button, Icon, Tooltip } from "@chakra-ui/react";
 import { MdOutlineLightMode, MdLightMode, MdOutlineDarkMode, MdDarkMode } from "react-icons/md";
 import styled from "styled-components";
 
@@ -29,9 +29,16 @@ const ModeIcon = ({ mode, toggleMode }) => {
   return (
     <Container>
       <motion.path variants={pathVariants} initial="initial" animate="animate">
-        <Button variant="outline" colorScheme={mode === "dark" ? "whiteAlpha" : "blackAlpha"} onClick={toggleMode}>
-          <Icon as={mode === "dark" ? MdOutlineLightMode : MdOutlineDarkMode} size="lg" boxSize="1.3em" />
-        </Button>
+        <Tooltip label={mode === "dark" ? "Light Mode" : "Dark Mode"}>
+          <Button
+            variant="outline"
+            colorScheme={mode === "dark" ? "white" : "black"}
+            onClick={toggleMode}
+            rounded="full"
+          >
+            <Icon as={mode === "dark" ? MdOutlineLightMode : MdOutlineDarkMode} size="lg" boxSize="1.3em" />
+          </Button>
+        </Tooltip>
       </motion.path>
     </Container>
   );

@@ -21,7 +21,7 @@ export const StepStyles = {
   },
   Outfit: {
     Male: [{ maxWidth: "90%" }, { maxWidth: "55%" }],
-    Female: [{ maxWidth: "100%" }, { maxWidth: "100%" }],
+    Female: [{ maxWidth: "80%", marginTop: "20%" }, { maxWidth: "80%" }],
   },
   FootAcc: {
     Male: [{ maxWidth: "100%" }, { maxWidth: "100%" }],

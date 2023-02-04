@@ -1,12 +1,23 @@
-import { Button, Box, Text, ButtonGroup, VStack, Heading, Grid, GridItem } from "@chakra-ui/react";
+import { Button, Box, Text, ButtonGroup, VStack, Heading, Grid, GridItem, useColorMode } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Gender } from "../../constants/paths";
-import { SelectionContent } from "../../constants/content";
 import { GenderDialogues } from "../../constants/dialogues";
 import { GenderStyles } from "../../constants/styles";
 import { getRandomElement } from "../../utils";
+import { useMemo } from "react";
 
 const GenderStep = ({ value, setValue, onNext }) => {
+  const { colorMode } = useColorMode();
+  const dialogues = useMemo(
+    () =>
+      value
+        ? [getRandomElement(GenderDialogues[value][1]["dialogues"])]
+        : [
+            getRandomElement(GenderDialogues["Female"][0]["dialogues"]),
+            getRandomElement(GenderDialogues["Male"][0]["dialogues"]),
+          ],
+    [value]
+  );
   return (
     <Box mt={20} mb={10}>
       <AnimatePresence mode="wait">
@@ -19,18 +30,18 @@ const GenderStep = ({ value, setValue, onNext }) => {
               exit={{ opacity: 0 }}
             >
               <Box rounded="lg" p={4} bg="gray.800" color="white">
-                <Text>{getRandomElement(GenderDialogues[value][1]["dialogues"])}</Text>
+                <Text>{dialogues[0]}</Text>
                 <ButtonGroup mt={5} spacing={5}>
                   <Button
                     onClick={() => {
                       setValue("Gender", null);
                     }}
                     variant="outline"
-                    colorScheme="teal"
+                    colorScheme={colorMode == "light" ? "blue" : "teal"}
                   >
                     Choose Again
                   </Button>
-                  <Button onClick={onNext} variant="outline" colorScheme="teal">
+                  <Button onClick={onNext} variant="outline" colorScheme={colorMode == "light" ? "blue" : "teal"}>
                     Let's Go!
                   </Button>
                 </ButtonGroup>
@@ -62,7 +73,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                   exit={{ x: -1000, opacity: 0 }}
                 >
                   <Box rounded="lg" p={4} bg="gray.800" color="white">
-                    <Text>{getRandomElement(GenderDialogues["Female"][0]["dialogues"])}</Text>
+                    <Text>{dialogues[0]}</Text>
                   </Box>
                 </motion.div>
                 <motion.img
@@ -90,7 +101,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
               >
                 {value === null && (
                   <Heading as="h1" textAlign="center">
-                    {getRandomElement(SelectionContent)}
+                    Who do you relate to more?
                   </Heading>
                 )}
               </motion.div>
@@ -104,7 +115,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                   exit={{ x: 1000, opacity: 0 }}
                 >
                   <Box rounded="lg" p={4} bg="gray.800" color="white">
-                    <Text>{getRandomElement(GenderDialogues["Male"][0]["dialogues"])}</Text>
+                    <Text>{dialogues[1]}</Text>
                   </Box>
                 </motion.div>
                 <motion.img

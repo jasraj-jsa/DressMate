@@ -1,15 +1,5 @@
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Card,
-  CardBody,
-  CardHeader,
-  Flex,
-  useColorMode,
-  useStyleConfig,
-} from "@chakra-ui/react";
-import { useState, Suspense } from "react";
+import { Card, CardBody, CardHeader, Flex, useColorMode } from "@chakra-ui/react";
+import { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import GenderStep from "./Gender";
@@ -75,6 +65,7 @@ const MatchPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { colorMode } = useColorMode();
   const [currentStep, setCurrentStep] = useState(0);
+  const [prediction, setPrediction] = useState("");
   const nextStep = () => {
     if (currentStep < StepsOrder.length) setCurrentStep((currentStep) => currentStep + 1);
   };
@@ -87,7 +78,7 @@ const MatchPage = () => {
     Outfit: null,
     FootAcc: null,
     Occasion: null,
-    Suggestions: [],
+    Suggestions: new Set(),
   });
   const setValue = (key, value) => {
     if (key in formValues) setFormValues((values) => ({ ...values, [key]: value }));
@@ -97,7 +88,7 @@ const MatchPage = () => {
     setIsLoading(true);
     const API_Key = localStorage.getItem("API_Key") || "";
     const Temperature = localStorage.getItem("Temperature") || "";
-    const body = JSON.stringify({ ...formValues, API_Key, Temperature });
+    const body = JSON.stringify({ ...formValues, Suggestions: [...formValues["Suggestions"]], API_Key, Temperature });
     const options = {
       method: "POST",
       headers: {
@@ -106,56 +97,53 @@ const MatchPage = () => {
       body: body,
     };
     const response = await fetch("", options);
-    const output = await response.json();
+    const output = await response.json()["data"];
+    setPrediction(output);
     setIsLoading(false);
   };
 
   return (
-    <>
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Flex justifyContent="center" alignItems="center">
-          <Card sx={CardStyles[colorMode]}>
-            <CardHeader>
-              <Title variants={container} initial="hidden" animate="show">
-                <div>
-                  <motion.h2 variants={item} data-scroll data-scroll-delay="0.13" data-scroll-speed="4">
-                    D
-                  </motion.h2>
-                  <motion.h2 variants={item} data-scroll data-scroll-delay="0.09" data-scroll-speed="4">
-                    R
-                  </motion.h2>
-                  <motion.h2 variants={item} data-scroll data-scroll-delay="0.06" data-scroll-speed="4">
-                    E
-                  </motion.h2>
-                  <motion.h2 variants={item} data-scroll data-scroll-delay="0.04" data-scroll-speed="4">
-                    S
-                  </motion.h2>
-                  <motion.h2 variants={item} data-scroll data-scroll-delay="0.13" data-scroll-speed="4">
-                    S
-                  </motion.h2>
-                </div>
-              </Title>
-            </CardHeader>
-            <CardBody>
-              {currentStep === 0 && <GenderStep value={formValues["Gender"]} setValue={setValue} onNext={nextStep} />}
-              {currentStep > 0 && (
-                <StepComponent
-                  step={StepsOrder[currentStep]}
-                  values={formValues}
-                  setValue={setValue}
-                  gender={formValues["Gender"]}
-                  onPrev={previousStep}
-                  onNext={nextStep}
-                  last={currentStep >= StepsOrder.length - 1}
-                  isLoading={isLoading}
-                  handleSubmit={handleSubmit}
-                />
-              )}
-            </CardBody>
-          </Card>
-        </Flex>
-      </Suspense>
-    </>
+    <Flex justifyContent="center" alignItems="center">
+      <Card sx={CardStyles[colorMode]}>
+        <CardHeader>
+          <Title variants={container} initial="hidden" animate="show">
+            <div>
+              <motion.h2 variants={item} data-scroll data-scroll-delay="0.13" data-scroll-speed="4">
+                D
+              </motion.h2>
+              <motion.h2 variants={item} data-scroll data-scroll-delay="0.09" data-scroll-speed="4">
+                R
+              </motion.h2>
+              <motion.h2 variants={item} data-scroll data-scroll-delay="0.06" data-scroll-speed="4">
+                E
+              </motion.h2>
+              <motion.h2 variants={item} data-scroll data-scroll-delay="0.04" data-scroll-speed="4">
+                S
+              </motion.h2>
+              <motion.h2 variants={item} data-scroll data-scroll-delay="0.13" data-scroll-speed="4">
+                S
+              </motion.h2>
+            </div>
+          </Title>
+        </CardHeader>
+        <CardBody>
+          {currentStep === 0 && <GenderStep value={formValues["Gender"]} setValue={setValue} onNext={nextStep} />}
+          {currentStep > 0 && (
+            <StepComponent
+              step={StepsOrder[currentStep]}
+              values={formValues}
+              setValue={setValue}
+              gender={formValues["Gender"]}
+              onPrev={previousStep}
+              onNext={nextStep}
+              last={currentStep >= StepsOrder.length - 1}
+              isLoading={isLoading}
+              handleSubmit={handleSubmit}
+            />
+          )}
+        </CardBody>
+      </Card>
+    </Flex>
   );
 };
 

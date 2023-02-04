@@ -20,6 +20,7 @@ import {
   ModalBody,
   useDisclosure,
   useColorMode,
+  ModalCloseButton,
 } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { StepPaths, ResultPaths } from "../../constants/paths";
@@ -31,7 +32,18 @@ import { GrPrevious, GrNext } from "react-icons/gr";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import { useMemo, useState } from "react";
 
-const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, isLoading, handleSubmit }) => {
+const StepComponent = ({
+  step,
+  values,
+  setValue,
+  gender,
+  last,
+  onPrev,
+  onNext,
+  isLoading,
+  handleSubmit,
+  prediction,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isVis, setIsVis] = useState(true);
   const [counter, setCounter] = useState(0);
@@ -157,7 +169,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                             onOpen();
                             setIsVis(true);
                             setCounter((counter) => counter + 1);
-                            console.log(values);
+                            // handleSubmit();
                           }}
                           colorScheme={colorMode == "light" ? "blue" : "teal"}
                           size="lg"
@@ -219,9 +231,10 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
           </VStack>
         </GridItem>
       </Grid>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} size="lg">
         <ModalOverlay />
         <ModalContent minH="90vh">
+          <ModalCloseButton />
           <ModalBody>
             <AnimatePresence mode="wait">
               {isVis ? (
@@ -257,23 +270,24 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                 <motion.div
                   key="final"
                   initial={{ opacity: 0, y: -250 }}
-                  animate={{ opacity: 1, y: 0, transition: { duration: 2.75 } }}
+                  animate={{ opacity: 1, y: 75, transition: { duration: 3 } }}
                 >
-                  <Box bg="white">
+                  <Box bg="white" color="black" p={4} rounded="lg">
                     <Heading>Here are you results</Heading>
-                    <Text>qwdqwh dqw khwqjk dhqwd jkqwhqwdj ;qwd qwdqwdqw d qw dqw dq dwq d qwd</Text>
+                    <Text mt={5}>{prediction}</Text>
                   </Box>
                 </motion.div>
               )}
             </AnimatePresence>
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
               {isVis && (
                 <motion.img
                   src={ResultPaths[resultsKey]}
-                  animate={{ y: [0, -200, 0], transition: { repeat: 2, duration: 2 } }}
-                  exit={{ y: [0, -200, 800], transition: { duration: 2.5 } }}
+                  animate={{ y: [-200, 0, -200], transition: { repeat: 2, duration: 2 } }}
+                  exit={{ y: [-200, 800], transition: { duration: 2.75 } }}
                   onAnimationComplete={() => setIsVis(false)}
                   style={{ maxWidth: resultsKey == "Mickey" ? "100%" : "55%" }}
+                  key={resultsKey}
                 />
               )}
             </AnimatePresence>

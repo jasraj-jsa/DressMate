@@ -18,7 +18,8 @@ router.post("/", async (req, res, next) => {
         (Outfit && (Headwear.trim() ? ", " + Outfit : Outfit)) +
         (FootAcc && (Outfit.trim() || Headwear.trim() ? ", " + FootAcc : FootAcc));
       prompt =
-        `Does the combination of ${combination} suitable for a ${Gender}` + (Occasion ? `attending a ${Occasion}` : "");
+        `Does the combination of ${combination} suitable for a ${Gender} ` +
+        (Occasion ? `attending a ${Occasion}` : "");
     } else {
       const sh = Suggestions.includes("Headwear") ? "" : Headwear;
       const so = Suggestions.includes("Outfit") ? "" : Outfit.trim() && (sh ? ", " + Outfit : Outfit);
@@ -52,7 +53,8 @@ router.post("/", async (req, res, next) => {
       data: response.data.choices[0].text.trim(),
     });
   } catch (error) {
-    res.status(500).json({ error });
+    const errMessage = error.response ? error.response.data : error.message ? error.message : error;
+    res.status(501).json({ error: errMessage });
   }
 });
 

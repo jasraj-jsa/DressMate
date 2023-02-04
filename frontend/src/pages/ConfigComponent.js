@@ -19,8 +19,8 @@ const ConfigComponent = ({ isOpen, onClose }) => {
   const [apiKey, setAPIKey] = useState(localStorage.getItem("API_Key") || "");
   const [temperature, setTemperature] = useState(localStorage.getItem("Temperature") || "");
   const updateConfig = () => {
-    if (apiKey) localStorage.setItem("API_Key", apiKey);
-    if (temperature) localStorage.setItem("Temperature", temperature);
+    localStorage.setItem("API_Key", apiKey);
+    localStorage.setItem("Temperature", temperature);
     onClose();
   };
   return (

@@ -96,30 +96,22 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <NavContainer
-      click={+click}
-      initial={{ y: `-100%` }}
-      animate={{ y: 0 }}
-      transition={{ duration: 2, delay: 5 /* 2 */ }}
-    >
+    <NavContainer click={+click} initial={{ y: `-100%` }} animate={{ y: 0 }} transition={{ duration: 2, delay: 5 }}>
       <MenuItems drag="y" dragConstraints={{ top: 0, bottom: 70 }} dragElastic={0.05} dragSnapToOrigin>
         <MenuBtn onClick={() => setClick(!click)}>
           <span>MENU</span>
         </MenuBtn>
         <Item whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }}>
-          {/* onClick={() => handleScroll("#home")} */}{" "}
           <Link href="/" _hover={{ textDecoration: "none" }}>
             Home
           </Link>
         </Item>
         <Item whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }}>
-          {/* onClick={() => handleScroll(".about")} */}
           <Link href="/match" _hover={{ textDecoration: "none" }}>
             Match
           </Link>
         </Item>
         <Item whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }}>
-          {/* onClick={() => handleScroll("#shop")} */}
           <Link href="/about" _hover={{ textDecoration: "none" }}>
             About
           </Link>
@@ -133,17 +125,8 @@ const Navbar = () => {
             setClick(false);
           }}
         >
-          {/* onClick={() => handleScroll("#shop")} */}
           <Link _hover={{ textDecoration: "none" }}>Config</Link>
           <ConfigComponent isOpen={isOpen} onClose={onClose} />
-        </Item>
-
-        <Item
-          whileHover={{ scale: 1.1, y: -5 }}
-          whileTap={{ scale: 0.9, y: 0 }}
-          onClick={() => handleScroll(".new-arrival")}
-        >
-          {" "}
         </Item>
       </MenuItems>
     </NavContainer>

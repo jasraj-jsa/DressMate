@@ -96,8 +96,10 @@ const MatchPage = () => {
       },
       body: body,
     };
-    const response = await fetch("", options);
-    const output = await response.json()["data"];
+    const response = await fetch("/api/v1/match", options);
+    console.log(response);
+    const output = (await response.json())["data"];
+    console.log(output);
     setPrediction(output);
     setIsLoading(false);
   };
@@ -139,6 +141,7 @@ const MatchPage = () => {
               last={currentStep >= StepsOrder.length - 1}
               isLoading={isLoading}
               handleSubmit={handleSubmit}
+              prediction={prediction}
             />
           )}
         </CardBody>

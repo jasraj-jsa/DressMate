@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
+import { HStack, Link, Text, Icon } from "@chakra-ui/react";
+import { FaRegCopyright } from "react-icons/fa";
 
 const VideoContainer = styled.section`
   width: 100%;
@@ -99,6 +101,15 @@ const CoverVideo = () => {
         <motion.h2 style={{ alignSelf: "flex-end" }} variants={item}>
           Dress the Part, Every Time
         </motion.h2>
+        <motion.div variants={item}>
+          <HStack position="absolute" right="5" bottom="5" spacing={1} fontSize="1.2em">
+            <Text>Video</Text>
+            <Icon as={FaRegCopyright} />
+            <Link href="https://www.youtube.com/@nicolasvasquez1/" target="_blank">
+              <u>Nicolas Vasquez</u>
+            </Link>
+          </HStack>
+        </motion.div>
       </Title>
 
       <video src="/assets/DressUp.mp4" type="video/mp4" autoPlay muted loop />

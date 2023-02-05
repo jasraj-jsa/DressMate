@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import GlobalStyles from "./styles/GlobalStyles";
 import { Container } from "./components/Global";
 import NotFound from "./components/NotFound";
+import Footer from "./components/Footer";
 
 function App() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -34,6 +35,7 @@ function App() {
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <Footer />
         </Container>
       </ThemeProvider>
     </>

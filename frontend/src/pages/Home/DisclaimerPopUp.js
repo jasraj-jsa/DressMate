@@ -30,7 +30,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   button {
-    bottom: 1.5rem;
+    bottom: 3rem;
     z-index: 6;
   }
 `;

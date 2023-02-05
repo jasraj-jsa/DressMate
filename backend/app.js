@@ -7,8 +7,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var openaiRouter = require("./routes/openai");
+var matchRouter = require("./routes/match");
 
 var app = express();
 
@@ -23,8 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/api/v1/match", openaiRouter);
+app.use("/api/v1/match", matchRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

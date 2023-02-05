@@ -59,7 +59,7 @@ const Logo = () => {
     <Container>
       <Link to="/">
         <motion.path variants={pathVariants} initial="initial" animate="animate">
-          <img src="/assets/Logo.png" width="48px" height="48px" />
+          <img src="/assets/Logo.png" width="48px" height="48px" alt="Logo" />
         </motion.path>
 
         <Text variants={textVariants} initial="initial" animate="animate">

@@ -32,18 +32,7 @@ import { GrPrevious, GrNext } from "react-icons/gr";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import { useMemo, useState } from "react";
 
-const StepComponent = ({
-  step,
-  values,
-  setValue,
-  gender,
-  last,
-  onPrev,
-  onNext,
-  isLoading,
-  handleSubmit,
-  prediction,
-}) => {
+const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, isLoading, fetchResults }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isVis, setIsVis] = useState(true);
   const [counter, setCounter] = useState(0);
@@ -55,7 +44,7 @@ const StepComponent = ({
     ],
     [step, gender]
   );
-  const names = [StepDialgoues[step][gender][0]["name"], StepDialgoues[step][gender][1]["name"]];
+  const [prediction, setPrediction] = useState("");
   const helperText = StepsHelperText[step][gender];
   const handleSuggestionChange = (event) => {
     let suggestions = values["Suggestions"];
@@ -68,6 +57,16 @@ const StepComponent = ({
     onNext();
   };
   const { colorMode } = useColorMode();
+
+  const handleSubmit = async () => {
+    const output = await fetchResults();
+    if (output) {
+      setPrediction(output);
+      onOpen();
+      setIsVis(true);
+      setCounter((counter) => counter + 1);
+    }
+  };
 
   return (
     <Box mt={20}>
@@ -144,7 +143,7 @@ const StepComponent = ({
                       onChange={handleSuggestionChange}
                       isChecked={values["Suggestions"].has(step)}
                       size="lg"
-                      colorScheme={colorMode == "light" ? "blue" : "teal"}
+                      colorScheme={colorMode === "light" ? "blue" : "teal"}
                     />
                   </FormControl>
                 )}
@@ -155,7 +154,7 @@ const StepComponent = ({
                       <Button
                         onClick={onPrev}
                         rounded="full"
-                        colorScheme={colorMode == "light" ? "blue" : "teal"}
+                        colorScheme={colorMode === "light" ? "blue" : "teal"}
                         size="lg"
                         disabled={isLoading}
                       >
@@ -165,13 +164,8 @@ const StepComponent = ({
                     {last ? (
                       <Tooltip label="Let's Go!">
                         <Button
-                          onClick={() => {
-                            onOpen();
-                            setIsVis(true);
-                            setCounter((counter) => counter + 1);
-                            // handleSubmit();
-                          }}
-                          colorScheme={colorMode == "light" ? "blue" : "teal"}
+                          onClick={handleSubmit}
+                          colorScheme={colorMode === "light" ? "blue" : "teal"}
                           size="lg"
                           rounded="full"
                           isLoading={isLoading}
@@ -184,7 +178,7 @@ const StepComponent = ({
                         <Button
                           onClick={handleNext}
                           rounded="full"
-                          colorScheme={colorMode == "light" ? "blue" : "teal"}
+                          colorScheme={colorMode === "light" ? "blue" : "teal"}
                           size="lg"
                         >
                           <Icon as={GrNext} size="lg" />
@@ -286,7 +280,7 @@ const StepComponent = ({
                   animate={{ y: [-200, 0, -200], transition: { repeat: 2, duration: 2 } }}
                   exit={{ y: [-200, 800], transition: { duration: 2.75 } }}
                   onAnimationComplete={() => setIsVis(false)}
-                  style={{ maxWidth: resultsKey == "Mickey" ? "100%" : "55%" }}
+                  style={{ maxWidth: resultsKey === "Mickey" ? "100%" : "55%" }}
                   key={resultsKey}
                 />
               )}

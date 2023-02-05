@@ -61,7 +61,7 @@ const DisclaimerPopUp = () => {
         whileTap={{ scale: 0.9 }}
         colorScheme="red"
         size="lg"
-        color={colorMode == "light" ? "black" : "white"}
+        color={colorMode === "light" ? "black" : "white"}
         border="none"
         onClick={onOpen}
         rounded="lg"

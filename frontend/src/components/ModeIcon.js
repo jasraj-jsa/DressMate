@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button, Icon, Tooltip } from "@chakra-ui/react";
-import { MdOutlineLightMode, MdLightMode, MdOutlineDarkMode, MdDarkMode } from "react-icons/md";
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import styled from "styled-components";
 
 const pathVariants = {

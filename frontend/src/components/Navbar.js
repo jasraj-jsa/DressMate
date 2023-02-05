@@ -2,8 +2,8 @@ import { useDisclosure, Link } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import styled from "styled-components";
-import ConfigComponent from "../pages/ConfigComponent";
-import HelpComponent from "../pages/HelpComponent";
+import ConfigComponent from "./Config";
+import HelpComponent from "./Help";
 
 const NavContainer = styled(motion.div)`
   position: absolute;

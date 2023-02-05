@@ -1,10 +1,10 @@
-import { Card, CardBody, CardHeader, Flex, Text, useColorMode } from "@chakra-ui/react";
+import { Card, CardBody, CardHeader, Flex, useColorMode, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import GenderStep from "./Gender";
 import StepComponent from "./StepComponent";
-import { StepsOrder } from "../../constants/others";
+import { API_Route, StepsOrder } from "../../constants/others";
 import { CardStyles } from "../../styles/Themes";
 
 const Title = styled(motion.div)`
@@ -65,7 +65,7 @@ const MatchPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { colorMode } = useColorMode();
   const [currentStep, setCurrentStep] = useState(0);
-  const [prediction, setPrediction] = useState("");
+  const toast = useToast();
   const nextStep = () => {
     if (currentStep < StepsOrder.length) setCurrentStep((currentStep) => currentStep + 1);
   };
@@ -96,12 +96,23 @@ const MatchPage = () => {
       },
       body: body,
     };
-    const response = await fetch("/api/v1/match", options);
-    console.log(response);
-    const output = (await response.json())["data"];
-    console.log(output);
-    setPrediction(output);
+    const response = await fetch(API_Route, options);
+    var output = "";
+    if (response.ok) output = (await response.json())["data"];
+    else {
+      let out = await response.json();
+      if ("error" in out) out = out["error"];
+      if (typeof out === "object") out = JSON.stringify(out);
+      toast({
+        title: "Error",
+        description: out,
+        status: "error",
+        duration: 10000,
+        isClosable: true,
+      });
+    }
     setIsLoading(false);
+    return output;
   };
 
   return (
@@ -110,21 +121,11 @@ const MatchPage = () => {
         <CardHeader>
           <Title variants={container} initial="hidden" animate="show">
             <div>
-              <motion.h2 variants={item} data-scroll data-scroll-delay="0.13" data-scroll-speed="4">
-                D
-              </motion.h2>
-              <motion.h2 variants={item} data-scroll data-scroll-delay="0.09" data-scroll-speed="4">
-                R
-              </motion.h2>
-              <motion.h2 variants={item} data-scroll data-scroll-delay="0.06" data-scroll-speed="4">
-                E
-              </motion.h2>
-              <motion.h2 variants={item} data-scroll data-scroll-delay="0.04" data-scroll-speed="4">
-                S
-              </motion.h2>
-              <motion.h2 variants={item} data-scroll data-scroll-delay="0.13" data-scroll-speed="4">
-                S
-              </motion.h2>
+              <motion.h2 variants={item}>M</motion.h2>
+              <motion.h2 variants={item}>A</motion.h2>
+              <motion.h2 variants={item}>T</motion.h2>
+              <motion.h2 variants={item}>C</motion.h2>
+              <motion.h2 variants={item}>H</motion.h2>
             </div>
           </Title>
         </CardHeader>
@@ -140,8 +141,7 @@ const MatchPage = () => {
               onNext={nextStep}
               last={currentStep >= StepsOrder.length - 1}
               isLoading={isLoading}
-              handleSubmit={handleSubmit}
-              prediction={prediction}
+              fetchResults={handleSubmit}
             />
           )}
         </CardBody>

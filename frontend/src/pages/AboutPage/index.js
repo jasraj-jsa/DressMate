@@ -1,21 +1,8 @@
-import {
-  Box,
-  Card,
-  CardBody,
-  CardHeader,
-  Heading,
-  Flex,
-  HStack,
-  Text,
-  Grid,
-  GridItem,
-  useStyleConfig,
-  useColorMode,
-} from "@chakra-ui/react";
+import { Card, CardBody, CardHeader, Flex, Text, Grid, GridItem, useColorMode } from "@chakra-ui/react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { AboutPaths } from "../../constants/paths";
-import { AboutPageContent, HowToUseContent } from "../../constants/content";
+import { AboutPageContent } from "../../constants/content";
 import { AboutStyles } from "../../constants/styles";
 import { CardStyles } from "../../styles/Themes";
 

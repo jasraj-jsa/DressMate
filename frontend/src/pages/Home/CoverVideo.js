@@ -10,12 +10,6 @@ const VideoContainer = styled.section`
     width: 100%;
     height: 100vh;
     object-fit: cover;
-    @media (max-width: 48em) {
-      object-position: center 10%;
-    }
-    @media (max-width: 30em) {
-      object-position: center 50%;
-    }
   }
 `;
 

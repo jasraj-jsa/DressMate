@@ -10,13 +10,14 @@ router.post("/", async (req, res, next) => {
     const sugSize = Suggestions.length;
     var prompt;
     if (sugSize === 3) {
-      res.status(400).json({ error: "Not everything can be suggested" });
+      res.status(400).json({ error: "You can't mark everything for suggestion. Please try again!" });
       return;
     } else if (!sugSize) {
       const combination =
-        Headwear +
-        (Outfit && (Headwear.trim() ? ", " + Outfit : Outfit)) +
-        (FootAcc && (Outfit.trim() || Headwear.trim() ? ", " + FootAcc : FootAcc));
+        Headwear ||
+        "" +
+          (Outfit ? (Headwear.trim() ? ", " + Outfit : Outfit) : "") +
+          (FootAcc ? (Outfit.trim() || Headwear.trim() ? ", " + FootAcc : FootAcc) : "");
       prompt =
         `Does the combination of ${combination} suitable for a ${Gender} ` +
         (Occasion ? `attending a ${Occasion}` : "");
@@ -48,13 +49,14 @@ router.post("/", async (req, res, next) => {
       temperature: Temperature || 0.75,
       max_tokens: 1000,
     });
+    console.log(prompt);
     res.json({
       prompt: prompt,
       data: response.data.choices[0].text.trim(),
     });
   } catch (error) {
-    const errMessage = error.response ? error.response.data : error.message ? error.message : error;
-    res.status(501).json({ error: errMessage });
+    const errMessage = error.response ? error.response.data : { error: error.message };
+    res.status(501).json(errMessage);
   }
 });
 

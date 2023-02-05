@@ -37,11 +37,11 @@ const GenderStep = ({ value, setValue, onNext }) => {
                       setValue("Gender", null);
                     }}
                     variant="outline"
-                    colorScheme={colorMode == "light" ? "blue" : "teal"}
+                    colorScheme={colorMode === "light" ? "blue" : "teal"}
                   >
                     Choose Again
                   </Button>
-                  <Button onClick={onNext} variant="outline" colorScheme={colorMode == "light" ? "blue" : "teal"}>
+                  <Button onClick={onNext} variant="outline" colorScheme={colorMode === "light" ? "blue" : "teal"}>
                     Let's Go!
                   </Button>
                 </ButtonGroup>

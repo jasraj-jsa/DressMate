@@ -1,10 +1,9 @@
 import { useDisclosure, Link } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
-import { useLocomotiveScroll } from "react-locomotive-scroll";
-// import { Link } from "react-router-dom";
 import styled from "styled-components";
 import ConfigComponent from "../pages/ConfigComponent";
+import HelpComponent from "../pages/HelpComponent";
 
 const NavContainer = styled(motion.div)`
   position: absolute;
@@ -79,24 +78,12 @@ const Item = styled(motion.li)`
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
+  const { isOpen: configIsOpen, onOpen: configOnOpen, onClose: configOnClose } = useDisclosure();
 
-  const { scroll } = useLocomotiveScroll();
-
-  const handleScroll = (id) => {
-    let elem = document.querySelector(id);
-    // console.log(elem);
-    setClick(!click);
-    scroll.scrollTo(elem, {
-      offset: "-100",
-      duration: "2000",
-      easing: [0.25, 0.0, 0.35, 1.0],
-    });
-  };
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: helpIsOpen, onOpen: helpOnOpen, onClose: helpOnClose } = useDisclosure();
 
   return (
-    <NavContainer click={+click} initial={{ y: `-100%` }} animate={{ y: 0 }} transition={{ duration: 2, delay: 5 }}>
+    <NavContainer click={+click} initial={{ y: `-100%` }} animate={{ y: 0 }} transition={{ duration: 2, delay: 3 }}>
       <MenuItems drag="y" dragConstraints={{ top: 0, bottom: 70 }} dragElastic={0.05} dragSnapToOrigin>
         <MenuBtn onClick={() => setClick(!click)}>
           <span>MENU</span>
@@ -111,6 +98,17 @@ const Navbar = () => {
             Match
           </Link>
         </Item>
+        <Item
+          whileHover={{ scale: 1.1, y: -5 }}
+          whileTap={{ scale: 0.9, y: 0 }}
+          onClick={() => {
+            helpOnOpen();
+            setClick(false);
+          }}
+        >
+          <Link _hover={{ textDecoration: "none" }}>Help</Link>
+          <HelpComponent isOpen={helpIsOpen} onClose={helpOnClose} />
+        </Item>
         <Item whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }}>
           <Link href="/about" _hover={{ textDecoration: "none" }}>
             About
@@ -121,12 +119,12 @@ const Navbar = () => {
           whileHover={{ scale: 1.1, y: -5 }}
           whileTap={{ scale: 0.9, y: 0 }}
           onClick={() => {
-            onOpen();
+            configOnOpen();
             setClick(false);
           }}
         >
           <Link _hover={{ textDecoration: "none" }}>Config</Link>
-          <ConfigComponent isOpen={isOpen} onClose={onClose} />
+          <ConfigComponent isOpen={configIsOpen} onClose={configOnClose} />
         </Item>
       </MenuItems>
     </NavContainer>

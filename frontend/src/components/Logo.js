@@ -31,8 +31,8 @@ const pathVariants = {
     opacity: 1,
 
     transition: {
-      duration: 2,
-      delay: 3,
+      duration: 1,
+      delay: 2,
       ease: "easeInOut",
     },
   },
@@ -47,8 +47,8 @@ const textVariants = {
     x: 0,
 
     transition: {
-      duration: 2,
-      delay: 5,
+      duration: 1,
+      delay: 3,
       ease: "easeInOut",
     },
   },
@@ -59,11 +59,11 @@ const Logo = () => {
     <Container>
       <Link to="/">
         <motion.path variants={pathVariants} initial="initial" animate="animate">
-          <img src="/logo.png" width="48px" height="48px" />
+          <img src="/assets/Logo.png" width="48px" height="48px" />
         </motion.path>
 
         <Text variants={textVariants} initial="initial" animate="animate">
-          Dress Me
+          Dress Mate
         </Text>
       </Link>
     </Container>

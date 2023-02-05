@@ -1,4 +1,4 @@
-import { Card, CardBody, CardHeader, Flex, useColorMode } from "@chakra-ui/react";
+import { Card, CardBody, CardHeader, Flex, Text, useColorMode } from "@chakra-ui/react";
 import { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";

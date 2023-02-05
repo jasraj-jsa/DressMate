@@ -15,7 +15,7 @@ import {
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { AboutPaths } from "../../constants/paths";
-import { AboutPageContent } from "../../constants/content";
+import { AboutPageContent, HowToUseContent } from "../../constants/content";
 import { AboutStyles } from "../../constants/styles";
 import { CardStyles } from "../../styles/Themes";
 

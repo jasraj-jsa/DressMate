@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  HStack,
   Text,
   Modal,
   ModalBody,
@@ -13,6 +12,7 @@ import {
   Grid,
   GridItem,
   VStack,
+  useColorMode,
 } from "@chakra-ui/react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -37,16 +37,20 @@ const Container = styled.div`
 
 const pathVariants = {
   animate: {
-    opacity: [1, 0, 1, 0, 1],
+    opacity: [0, 1, 0],
     transition: {
-      repeat: Infinity,
-      duration: 3,
+      opacity: {
+        repeat: Infinity,
+        delay: 4,
+        duration: 2,
+      },
     },
   },
 };
 
 const DisclaimerPopUp = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode } = useColorMode();
   return (
     <Container>
       <Button
@@ -55,11 +59,12 @@ const DisclaimerPopUp = () => {
         animate="animate"
         whileHover={{ scale: 1.3 }}
         whileTap={{ scale: 0.9 }}
-        bg="red.200"
+        colorScheme="red"
         size="lg"
-        variant="outline"
+        color={colorMode == "light" ? "black" : "white"}
         border="none"
         onClick={onOpen}
+        rounded="lg"
       >
         Disclaimer
       </Button>

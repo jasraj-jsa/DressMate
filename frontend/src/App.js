@@ -10,6 +10,7 @@ import Logo from "./components/Logo";
 import Navbar from "./components/Navbar";
 import GlobalStyles from "./styles/GlobalStyles";
 import { Container } from "./components/Global";
+import NotFound from "./components/NotFound";
 
 function App() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -31,6 +32,7 @@ function App() {
             <Route path="/about">
               <Route index element={<AboutPage />} />
             </Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>
       </ThemeProvider>

@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c6bf8ff5.css",
+    "main.js": "/static/js/main.a000f930.js",
+    "static/js/787.bb60e28e.chunk.js": "/static/js/787.bb60e28e.chunk.js",
+    "static/media/kaushan-script-all-400-normal.woff": "/static/media/kaushan-script-all-400-normal.ba623d1ca520a2a711d2.woff",
+    "static/media/sirin-stencil-all-400-normal.woff": "/static/media/sirin-stencil-all-400-normal.e1b8add18154b5d65682.woff",
+    "static/media/kaushan-script-latin-400-normal.woff2": "/static/media/kaushan-script-latin-400-normal.2855d49bba6b2cb7bec5.woff2",
+    "static/media/sirin-stencil-latin-400-normal.woff2": "/static/media/sirin-stencil-latin-400-normal.f668f96beabdc683277b.woff2",
+    "static/media/kaushan-script-latin-ext-400-normal.woff2": "/static/media/kaushan-script-latin-ext-400-normal.5a05e21384fe4b1b9db7.woff2",
+    "index.html": "/index.html",
+    "main.c6bf8ff5.css.map": "/static/css/main.c6bf8ff5.css.map",
+    "main.a000f930.js.map": "/static/js/main.a000f930.js.map",
+    "787.bb60e28e.chunk.js.map": "/static/js/787.bb60e28e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c6bf8ff5.css",
+    "static/js/main.a000f930.js"
+  ]
+}

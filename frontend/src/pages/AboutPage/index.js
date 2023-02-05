@@ -81,9 +81,8 @@ const AboutPage = () => {
             <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
               <motion.img
                 initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 3 }}
-                whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.2 }}
+                animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
+                whileHover={{ scale: 1.2 }}
                 src={AboutPaths["Agnes"]}
                 style={AboutStyles["Agnes"]}
               />
@@ -96,9 +95,8 @@ const AboutPage = () => {
             <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
               <motion.img
                 initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 3 }}
-                whileHover={{ y: [0, 50, 0, 50, 0], scale: 1.5 }}
+                animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
+                whileHover={{ scale: 1.5 }}
                 src={AboutPaths["Batman"]}
                 style={AboutStyles["Batman"]}
               />

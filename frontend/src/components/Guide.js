@@ -2,7 +2,7 @@ import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOve
 import { motion } from "framer-motion";
 import { HowToUseContent } from "../constants/content";
 
-const HelpComponent = ({ isOpen, onClose }) => {
+const GuideComponent = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="6xl">
       <ModalOverlay />
@@ -19,4 +19,4 @@ const HelpComponent = ({ isOpen, onClose }) => {
   );
 };
 
-export default HelpComponent;
+export default GuideComponent;

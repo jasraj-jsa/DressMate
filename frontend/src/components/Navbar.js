@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import styled from "styled-components";
 import ConfigComponent from "./Config";
-import HelpComponent from "./Help";
+import GuideComponent from "./Guide";
 
 const NavContainer = styled(motion.div)`
   position: absolute;
@@ -106,8 +106,8 @@ const Navbar = () => {
             setClick(false);
           }}
         >
-          <Link _hover={{ textDecoration: "none" }}>Help</Link>
-          <HelpComponent isOpen={helpIsOpen} onClose={helpOnClose} />
+          <Link _hover={{ textDecoration: "none" }}>Guide</Link>
+          <GuideComponent isOpen={helpIsOpen} onClose={helpOnClose} />
         </Item>
         <Item whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }}>
           <Link href="/about" _hover={{ textDecoration: "none" }}>

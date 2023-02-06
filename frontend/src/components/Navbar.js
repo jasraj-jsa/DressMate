@@ -7,10 +7,8 @@ import GuideComponent from "./Guide";
 
 const NavContainer = styled(motion.div)`
   position: absolute;
-  /* left: 50%; */
   top: ${(props) => (props.click ? "0" : `-${props.theme.navHeight}`)};
   transition: all 0.3s ease;
-  /* transform: translateX(-50%); */
   z-index: 6;
   width: 100vw;
   display: flex;
@@ -36,8 +34,6 @@ const MenuBtn = styled.li`
   transform: translateX(-50%);
   font-size: ${(props) => props.theme.fontmd};
   font-weight: 600;
-  /* border-end-start-radius: 50%; */
-  /* border-end-end-radius: 50%; */
   cursor: pointer;
   display: flex;
   justify-content: center;

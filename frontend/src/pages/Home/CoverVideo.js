@@ -98,14 +98,14 @@ const CoverVideo = () => {
           <motion.h1 variants={item}>t</motion.h1>
           <motion.h1 variants={item}>e</motion.h1>
         </div>
-        <motion.h2 style={{ alignSelf: "flex-end" }} variants={item}>
+        <motion.h2 style={{ alignSelf: "flex-end" }} variants={item} transition={{ duration: 2 }}>
           Dress the Part, Every Time
         </motion.h2>
-        <motion.div variants={item}>
-          <HStack position="absolute" right="5" bottom="5" spacing={1} fontSize="1.2em">
+        <motion.div variants={item} transition={{ duration: 2 }}>
+          <HStack position="absolute" right="3" bottom="5" spacing={1.5} fontSize="1.2em">
             <Text>Video</Text>
             <Icon as={FaRegCopyright} />
-            <Link href="https://www.youtube.com/@nicolasvasquez1/" target="_blank">
+            <Link href="https://www.youtube.com/@nicolasvasquez1/" isExternal>
               <u>Nicolas Vasquez</u>
             </Link>
           </HStack>

@@ -79,7 +79,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
           exit={{ opacity: 0 }}
         >
           <Heading textAlign="center" mb={10}>
-            {step}
+            {step !== "FootAcc" ? step : "Footwear & Accessories"}
           </Heading>
         </motion.div>
       </AnimatePresence>
@@ -266,7 +266,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                   initial={{ opacity: 0, y: -250 }}
                   animate={{ opacity: 1, y: 75, transition: { duration: 3 } }}
                 >
-                  <Box bg="white" color="black" p={4} rounded="lg">
+                  <Box bg={colorMode === "light" ? "#00A7E1" : "#2A9D8F"} color="black" p={4} rounded="lg">
                     <Heading>Here are you results</Heading>
                     <Text mt={5}>{prediction}</Text>
                   </Box>

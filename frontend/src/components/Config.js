@@ -17,7 +17,7 @@ import { useState } from "react";
 
 const ConfigComponent = ({ isOpen, onClose }) => {
   const [apiKey, setAPIKey] = useState(localStorage.getItem("API_Key") || "");
-  const [temperature, setTemperature] = useState(localStorage.getItem("Temperature") || "");
+  const [temperature, setTemperature] = useState(localStorage.getItem("Temperature") || 0.75);
   const updateConfig = () => {
     localStorage.setItem("API_Key", apiKey);
     localStorage.setItem("Temperature", temperature);

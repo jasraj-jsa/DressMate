@@ -27,7 +27,6 @@ export const StepsContent = {
       "What's the deal with your threads today? Are you donning a wizard's robes or a cowboy hat? We want to know, so we can match you up with the perfect outfit!",
     ],
     Female: [
-      "Jessie and Hermione are coming over for a wardrobe swap, what are you bringing to the table?",
       "What's your fashion game plan? Are you gonna rock a cowgirl look like Jessie or go for a Hogwarts-inspired ensemble like Hermione?",
       "What's on the hanger? Are you channeling your inner Jessie with a denim-on-denim combo or going for a wizard-chic look like Hermione?",
     ],
@@ -46,14 +45,14 @@ export const StepsContent = {
   },
   Occasion: {
     Male: [
-      "Are you going for a rugged, ice-harvesting look à la Kristoff or a charming thief vibe like Flynn Rider?",
-      "Are you planning on belting out 'Reindeer(s) Are Better Than People' or 'I've Got a Dream'? Let us know which character you're channeling in your outfit.",
-      "Fancy a night of building snowmen or stealing crowns? Let us know what character inspired your outfit!",
+      "Are you going for a rugged, ice-harvesting look à la Kristoff or a charming thief vibe like Flynn Rider? Tell us the occasion for your outfit!",
+      "Are you planning on belting out 'Reindeer(s) Are Better Than People' or 'I've Got a Dream'? Tell us the occasion for your outfit!",
+      "Fancy a night of building snowmen or stealing crowns? Tell us the occasion for your outfit!",
     ],
     Female: [
-      "Are you ready to turn heads like Elsa with her ice powers, or are you more of a 'stay in my tower' kind of Rapunzel? Give us the details so we can find the perfect outfit match for you.",
-      "Are you a fearless adventurer like Anna, or are you more of a 'paint with all the colors of the wind' kind of Rapunzel? Tell us your plans so we can match your outfit accordingly.",
-      "Are you feeling like a boss lady like Elsa, ready to take on the world? Or are you more of a 'singing in the tower' kind of Rapunzel? Give us the scoop so we can match your outfit to your mood.",
+      "Are you ready to turn heads like Elsa with her ice powers, or are you more of a 'stay in my tower' kind of Rapunzel? Tell us the occasion for your outfit!",
+      "Are you a fearless adventurer like Anna, or are you more of a 'paint with all the colors of the wind' kind of Rapunzel? Tell us the occasion for your outfit!.",
+      "Are you feeling like a boss lady like Elsa, ready to take on the world? Or are you more of a 'singing in the tower' kind of Rapunzel? Tell us the occasion for your outfit!",
     ],
   },
 };

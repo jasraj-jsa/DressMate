@@ -70,19 +70,6 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
 
   return (
     <Box mt={20}>
-      <AnimatePresence mode="wait">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ opacity: { duration: 2 } }}
-          key={step}
-          exit={{ opacity: 0 }}
-        >
-          <Heading textAlign="center" mb={10}>
-            {step !== "FootAcc" ? step : "Footwear & Accessories"}
-          </Heading>
-        </motion.div>
-      </AnimatePresence>
       <Grid templateColumns="repeat(6, 1fr)" gap={3} mb={5}>
         <GridItem colSpan={2} display="flex" justifyContent="center" alignItems="center">
           <VStack spacing={10}>
@@ -115,7 +102,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
             </AnimatePresence>
           </VStack>
         </GridItem>
-        <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" mt="40%" colSpan={2}>
+        <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
           <AnimatePresence mode="wait">
             <motion.div
               initial={{ opacity: 0 }}
@@ -126,7 +113,12 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
             >
               <VStack spacing={10}>
                 <FormControl>
-                  <FormLabel>{label}</FormLabel>
+                  <Heading textAlign="center" as="h1">
+                    {step !== "FootAcc" ? step : "Footwear & Accessories"}
+                  </Heading>
+                </FormControl>
+                <FormControl>
+                  <FormLabel textAlign="center">{label}</FormLabel>
                   <Input
                     value={values[step] || ""}
                     onChange={(event) => {

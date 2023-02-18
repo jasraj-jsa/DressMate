@@ -36,6 +36,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isVis, setIsVis] = useState(true);
   const [counter, setCounter] = useState(0);
+  const [outImages, setOutImages] = useState([]);
   const label = useMemo(() => getRandomElement(StepsContent[step][gender]), [step, gender]);
   const dialogues = useMemo(
     () => [
@@ -60,8 +61,10 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
 
   const handleSubmit = async () => {
     const output = await fetchResults();
-    if (output) {
-      setPrediction(output);
+    const { images, data } = output;
+    if (data) {
+      setPrediction(data);
+      setOutImages(images);
       onOpen();
       setIsVis(true);
       setCounter((counter) => counter + 1);
@@ -77,7 +80,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
               <motion.div
                 initial={{ x: -1000, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ x: { duration: 2 }, opacity: { duration: 2 } }}
+                transition={{ x: { duration: 1 }, opacity: { duration: 1 } }}
                 key={step}
                 exit={{ x: -1000, opacity: 0 }}
               >
@@ -92,7 +95,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                 whileHover={{
                   scale: 1.2,
                 }}
-                transition={{ duration: 2 }}
+                transition={{ duration: 1 }}
                 initial={{ x: -1000, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -1000, opacity: 0 }}
@@ -107,7 +110,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 2 }}
+              transition={{ duration: 1 }}
               key={step}
               exit={{ opacity: 0 }}
             >
@@ -142,7 +145,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
 
                 <FormControl display="flex" justifyContent="center" alignItems="center">
                   <ButtonGroup spacing="30%">
-                    <Tooltip label="Previous">
+                    <Tooltip label="Previous" isDisabled={isVis}>
                       <Button
                         onClick={onPrev}
                         rounded="full"
@@ -154,7 +157,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                       </Button>
                     </Tooltip>
                     {last ? (
-                      <Tooltip label="Let's Go!">
+                      <Tooltip label="Let's Go!" isDisabled={isVis}>
                         <Button
                           onClick={handleSubmit}
                           colorScheme={colorMode === "light" ? "blue" : "teal"}
@@ -166,7 +169,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                         </Button>
                       </Tooltip>
                     ) : (
-                      <Tooltip label="Next">
+                      <Tooltip label="Next" isDisabled={isVis}>
                         <Button
                           onClick={handleNext}
                           rounded="full"
@@ -189,7 +192,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
               <motion.div
                 initial={{ x: 1000, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ x: { duration: 2 }, opacity: { duration: 2 } }}
+                transition={{ x: { duration: 1 }, opacity: { duration: 1 } }}
                 key={step}
                 exit={{ x: 1000, opacity: 0 }}
               >
@@ -206,7 +209,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                 whileHover={{
                   scale: 1.2,
                 }}
-                transition={{ duration: 2 }}
+                transition={{ duration: 1 }}
                 initial={{ x: 1000, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 1000, opacity: 0 }}
@@ -224,57 +227,61 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
           <ModalBody>
             <AnimatePresence mode="wait">
               {isVis ? (
-                <motion.div style={{ display: "flex" }} exit={{ opacity: 0 }} key="initial">
-                  <motion.h1 key="initial" style={{ fontSize: "2em" }}>
-                    Pulling your results out
-                  </motion.h1>
-                  <AnimatePresence mode="wait">
-                    <motion.h1
-                      animate={{ opacity: [0, 1, 0], transition: { duration: 2.5, repeat: Infinity } }}
-                      key="first"
-                      style={{ fontSize: "2em" }}
-                    >
-                      .
+                <VStack>
+                  <motion.div style={{ display: "flex" }} exit={{ opacity: 0 }} key="initial">
+                    <motion.h1 key="initial" style={{ fontSize: "2em" }}>
+                      Pulling your results out
                     </motion.h1>
-                    <motion.h1
-                      animate={{ opacity: [0, 1, 0], transition: { duration: 2.5, repeat: Infinity } }}
-                      key="second"
-                      style={{ fontSize: "2em" }}
-                    >
-                      .
-                    </motion.h1>
-                    <motion.h1
-                      animate={{ opacity: [0, 1, 0], transition: { duration: 2.5, repeat: Infinity } }}
-                      key="third"
-                      style={{ fontSize: "2em" }}
-                    >
-                      .
-                    </motion.h1>
-                  </AnimatePresence>
-                </motion.div>
+                    <AnimatePresence mode="wait">
+                      <motion.h1
+                        animate={{ opacity: [0, 1, 0], transition: { duration: 2.5, repeat: Infinity } }}
+                        key="first"
+                        style={{ fontSize: "2em" }}
+                      >
+                        .
+                      </motion.h1>
+                      <motion.h1
+                        animate={{ opacity: [0, 1, 0], transition: { duration: 2.5, repeat: Infinity } }}
+                        key="second"
+                        style={{ fontSize: "2em" }}
+                      >
+                        .
+                      </motion.h1>
+                      <motion.h1
+                        animate={{ opacity: [0, 1, 0], transition: { duration: 2.5, repeat: Infinity } }}
+                        key="third"
+                        style={{ fontSize: "2em" }}
+                      >
+                        .
+                      </motion.h1>
+                    </AnimatePresence>
+                  </motion.div>
+                  <motion.img
+                    src={ResultPaths[resultsKey]}
+                    animate={{ y: [-200, 0, -200], transition: { repeat: 2, duration: 2 } }}
+                    exit={{ y: [-200, 500], transition: { duration: 1 } }}
+                    onAnimationComplete={() => setIsVis(false)}
+                    style={{ maxWidth: resultsKey === "Mickey" ? "100%" : "55%" }}
+                    key={resultsKey}
+                  />
+                </VStack>
               ) : (
                 <motion.div
                   key="final"
-                  initial={{ opacity: 0, y: -250 }}
+                  initial={{ opacity: 0, y: -500 }}
                   animate={{ opacity: 1, y: 75, transition: { duration: 3 } }}
                 >
                   <Box bg={colorMode === "light" ? "#00A7E1" : "#2A9D8F"} color="black" p={4} rounded="lg">
                     <Heading>Here are you results</Heading>
-                    <Text mt={5}>{prediction}</Text>
+                    <Text mt={5} mb={5}>
+                      {prediction}
+                    </Text>
+                    <VStack spacing={5}>
+                      {outImages.length &&
+                        outImages.map((imgSrc, index) => <img src={imgSrc} key={index} width="256" height="256" />)}
+                    </VStack>
                   </Box>
                 </motion.div>
-              )}
-            </AnimatePresence>
-            <AnimatePresence mode="wait">
-              {isVis && (
-                <motion.img
-                  src={ResultPaths[resultsKey]}
-                  animate={{ y: [-200, 0, -200], transition: { repeat: 2, duration: 2 } }}
-                  exit={{ y: [-200, 800], transition: { duration: 2.75 } }}
-                  onAnimationComplete={() => setIsVis(false)}
-                  style={{ maxWidth: resultsKey === "Mickey" ? "100%" : "55%" }}
-                  key={resultsKey}
-                />
               )}
             </AnimatePresence>
           </ModalBody>

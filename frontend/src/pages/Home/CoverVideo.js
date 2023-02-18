@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { HStack, Link, Text, Icon } from "@chakra-ui/react";
 import { FaRegCopyright } from "react-icons/fa";
+import { WebsiteTagline } from "../../constants/content";
 
 const VideoContainer = styled.section`
   width: 100%;
@@ -70,7 +71,7 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      delayChildren: 2,
+      delayChildren: 1,
       staggerChildren: 0.3,
     },
   },
@@ -99,7 +100,7 @@ const CoverVideo = () => {
           <motion.h1 variants={item}>e</motion.h1>
         </div>
         <motion.h2 style={{ alignSelf: "flex-end" }} variants={item} transition={{ duration: 2 }}>
-          Dress the Part, Every Time
+          {WebsiteTagline}
         </motion.h2>
         <motion.div variants={item} transition={{ duration: 2 }}>
           <HStack position="absolute" right="3" bottom="5" spacing={1.5} fontSize="1.2em">

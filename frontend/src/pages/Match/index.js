@@ -98,8 +98,9 @@ const MatchPage = () => {
     };
     const response = await fetch(API_Route, options);
     var output = "";
-    if (response.ok) output = (await response.json())["data"];
-    else {
+    if (response.ok) {
+      output = await response.json();
+    } else {
       let out = await response.json();
       if ("error" in out) out = out["error"];
       if (typeof out === "object") out = JSON.stringify(out);

@@ -79,7 +79,7 @@ const Navbar = () => {
   const { isOpen: helpIsOpen, onOpen: helpOnOpen, onClose: helpOnClose } = useDisclosure();
 
   return (
-    <NavContainer click={+click} initial={{ y: `-100%` }} animate={{ y: 0 }} transition={{ duration: 2, delay: 3 }}>
+    <NavContainer click={+click} initial={{ y: `-100%` }} animate={{ y: 0 }} transition={{ duration: 2, delay: 1 }}>
       <MenuItems drag="y" dragConstraints={{ top: 0, bottom: 70 }} dragElastic={0.05} dragSnapToOrigin>
         <MenuBtn onClick={() => setClick(!click)}>
           <span>MENU</span>

@@ -80,7 +80,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                   key="Agnes"
                   initial={{ x: -1000, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 2 }}
+                  transition={{ duration: 2, scale: { duration: 1 } }}
                   exit={{ x: -1000, opacity: 0 }}
                   whileHover={{
                     scale: 1.3,
@@ -122,7 +122,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                   key="Batman"
                   initial={{ x: 1000, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 2 }}
+                  transition={{ duration: 2, scale: { duration: 1 } }}
                   exit={{ x: 1000, opacity: 0 }}
                   whileHover={{
                     scale: 1.3,

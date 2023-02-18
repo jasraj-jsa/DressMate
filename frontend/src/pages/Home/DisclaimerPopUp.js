@@ -41,7 +41,7 @@ const pathVariants = {
     transition: {
       opacity: {
         repeat: Infinity,
-        delay: 4,
+        delay: 2,
         duration: 2,
       },
     },
@@ -77,7 +77,7 @@ const DisclaimerPopUp = () => {
           bg="red.300"
         >
           <ModalHeader color="white" textAlign="center">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 3 } }}>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 1 } }}>
               ATTENTION !!
             </motion.div>
           </ModalHeader>
@@ -88,7 +88,7 @@ const DisclaimerPopUp = () => {
                 <VStack spacing={10}>
                   <motion.div
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
+                    animate={{ scale: 1, opacity: 1, transition: { duration: 2 } }}
                   >
                     <Box rounded="lg" p={4} bg="gray.800" color="white">
                       <Text>{DisclaimerDialogues["Coder"]}</Text>
@@ -96,7 +96,7 @@ const DisclaimerPopUp = () => {
                   </motion.div>
                   <motion.img
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
+                    animate={{ scale: 1, opacity: 1, transition: { duration: 2 } }}
                     whileHover={{ scale: 1.5 }}
                     src={DisclaimerPaths["Coder"]}
                     style={DisclaimerStyles["Coder"]}
@@ -104,7 +104,7 @@ const DisclaimerPopUp = () => {
                 </VStack>
               </GridItem>
               <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 3 } }}>
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 1 } }}>
                   <Text
                     color="white"
                     dangerouslySetInnerHTML={{ __html: DisclaimerContent.replace(/\n/g, "<br />") }}
@@ -115,7 +115,7 @@ const DisclaimerPopUp = () => {
                 <VStack spacing={10}>
                   <motion.div
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
+                    animate={{ scale: 1, opacity: 1, transition: { duration: 2 } }}
                   >
                     <Box rounded="lg" p={4} bg="gray.800" color="white">
                       <Text>{DisclaimerDialogues["Voldemort"]}</Text>
@@ -123,7 +123,7 @@ const DisclaimerPopUp = () => {
                   </motion.div>
                   <motion.img
                     initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
+                    animate={{ scale: 1, opacity: 1, transition: { duration: 2 } }}
                     whileHover={{ scale: 1.3 }}
                     src={DisclaimerPaths["Voldemort"]}
                     style={DisclaimerStyles["Voldemort"]}

@@ -38,16 +38,16 @@ const MatchUtils = {
     return response.data.data[0].url;
   },
   generateResponse: async (openai, prompt, Temperature = 0.75) => {
-    const response = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: prompt,
-      temperature: Number(Temperature) || 0.75,
+    const response = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [
+        { role: "system", content: "You are a helpful assistant." },
+        { role: "user", content: prompt },
+      ],
+      temperature: Number(Temperature),
       max_tokens: 2000,
-      top_p: 1.0,
-      frequency_penalty: 0.0,
-      presence_penalty: 0.0,
     });
-    return response.data.choices[0].text.trim();
+    return response.data.choices[0].message.content.trim();
   },
   trimValues: (dictionary) => {
     for (let key in dictionary) {
@@ -58,8 +58,7 @@ const MatchUtils = {
     return dictionary;
   },
   generateFeaturePrompt: (feature, output, examples) => {
-    const extract = feature === "Bottomwear" ? "just the Bottomwear and not the Topwear" : feature;
-    return `Can you extract the information about ${extract} from the following text: \"${output}\". Here are some examples of what the ${feature} field can be: ${examples}. Return just \"no\" if ${feature} are not present in the text otherwise return the ${feature} found. Don't include anything else in the output.`;
+    return `Extract the information about ${feature} from the following text: \"${output}\". Here are some examples of what the ${feature} field can be: ${examples}. Return just \"no\" if ${feature} is not present in the text otherwise return the ${feature} found. Don't include anything else in the output.`;
   },
 };
 

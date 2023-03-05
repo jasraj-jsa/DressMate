@@ -103,6 +103,7 @@ const MatchPage = () => {
     } else {
       let out = await response.json();
       if ("error" in out) out = out["error"];
+      if ("message" in out) out = out["message"];
       if (typeof out === "object") out = JSON.stringify(out);
       toast({
         title: "Error",

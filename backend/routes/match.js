@@ -25,18 +25,15 @@ router.post("/", async (req, res, next) => {
 
     const output = await generateResponse(openai, prompt, Temperature);
 
-    const images = [];
-    for (const category of outfitCategories) {
-      const feature = category === "FootAcc" ? "Footwear and Accessories" : category;
-      const featurePrompt = generateFeaturePrompt(feature, output, exampleConstants[category][Gender]);
-      const features = await generateResponse(openai, featurePrompt);
+    const generateFeature = async (fprompt) => {
+      const features = await generateResponse(openai, fprompt);
       if (!["no", "no."].includes(features.toLowerCase())) {
         const image = await generateImage(openai, features);
         images.push(image);
       } else {
         if (category !== "Topwear" && category !== "Bottomwear") {
           if (body[category]) {
-            const image = await generateImage(openai, body[category], Temperature);
+            const image = await generateImage(openai, body[category]);
             images.push(image);
           }
         } else {
@@ -50,9 +47,19 @@ router.post("/", async (req, res, next) => {
           }
         }
       }
+    };
+
+    const images = [];
+    const calls = [];
+
+    for (const category of outfitCategories) {
+      const feature = category === "FootAcc" ? "Footwear or Fashion Accessories" : category;
+      const featurePrompt = generateFeaturePrompt(feature, output, exampleConstants[category][Gender]);
+      calls.push(generateFeature(featurePrompt));
     }
+    await Promise.all(calls);
+
     res.json({
-      prompt: prompt,
       data: output,
       images: images,
     });

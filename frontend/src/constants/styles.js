@@ -10,7 +10,7 @@ export const AboutStyles = {
 
 export const GenderStyles = {
   Selected: { maxHeight: "80%" },
-  Male: { maxWidth: "52%" },
+  Male: { maxWidth: "62%" },
   Female: { maxWidth: "100%" },
 };
 

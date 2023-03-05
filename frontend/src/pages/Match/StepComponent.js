@@ -145,7 +145,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
 
                 <FormControl display="flex" justifyContent="center" alignItems="center">
                   <ButtonGroup spacing="30%">
-                    <Tooltip label="Previous" isDisabled={isVis}>
+                    <Tooltip label="Previous" isDisabled={!isVis}>
                       <Button
                         onClick={onPrev}
                         rounded="full"
@@ -157,7 +157,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                       </Button>
                     </Tooltip>
                     {last ? (
-                      <Tooltip label="Let's Go!" isDisabled={isVis}>
+                      <Tooltip label="Let's Go!" isDisabled={!isVis}>
                         <Button
                           onClick={handleSubmit}
                           colorScheme={colorMode === "light" ? "blue" : "teal"}
@@ -169,7 +169,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                         </Button>
                       </Tooltip>
                     ) : (
-                      <Tooltip label="Next" isDisabled={isVis}>
+                      <Tooltip label="Next" isDisabled={!isVis}>
                         <Button
                           onClick={handleNext}
                           rounded="full"
@@ -220,7 +220,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
           </VStack>
         </GridItem>
       </Grid>
-      <Modal isOpen={isOpen} onClose={onClose} size="lg">
+      <Modal isOpen={isOpen} onClose={onClose} size="3xl">
         <ModalOverlay />
         <ModalContent minH="90vh">
           <ModalCloseButton />

@@ -26,7 +26,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
             <motion.div
               key={value}
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { duration: 3 } }}
+              animate={{ opacity: 1, transition: { duration: 2 } }}
               exit={{ opacity: 0 }}
             >
               <Box rounded="lg" p={4} bg="gray.800" color="white">
@@ -39,7 +39,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                     variant="outline"
                     colorScheme={colorMode === "light" ? "blue" : "teal"}
                   >
-                    Choose Again
+                    Pick Again
                   </Button>
                   <Button onClick={onNext} variant="outline" colorScheme={colorMode === "light" ? "blue" : "teal"}>
                     Let's Go!
@@ -52,8 +52,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
               initial={{ x: -1000, opacity: 0 }}
               animate={{ x: 0, opacity: 1, y: [100, 0, 100, 0, 100] }}
               transition={{
-                x: { duration: 2 },
-                opacity: { duration: 2 },
+                duration: 2,
                 y: { repeat: Infinity, duration: 2 },
               }}
               whileHover={{ scale: 1.2 }}
@@ -63,7 +62,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
             />
           </VStack>
         ) : (
-          <Grid templateColumns="repeat(5, 1fr)" gap={3} key="select">
+          <Grid templateColumns="repeat(6, 1fr)" gap={3} key="select">
             <GridItem colSpan={2} display="flex" justifyContent="center" alignItems="center">
               <VStack spacing={10}>
                 <motion.div
@@ -93,7 +92,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                 />
               </VStack>
             </GridItem>
-            <GridItem display="flex" justifyContent="center" alignItems="center" colSpan={1}>
+            <GridItem display="flex" justifyContent="center" alignItems="center" colSpan={2}>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 3 } }}
@@ -101,7 +100,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
               >
                 {value === null && (
                   <Heading as="h1" textAlign="center">
-                    Who do you relate to more?
+                    Choose the gender that best represents you.
                   </Heading>
                 )}
               </motion.div>

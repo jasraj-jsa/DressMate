@@ -1,4 +1,4 @@
-import { Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import { Flex, Heading, Link, Text, VStack } from "@chakra-ui/react";
 
 const NotFound = () => {
   return (
@@ -8,6 +8,7 @@ const NotFound = () => {
         <Text fontSize="2em">
           You've stumbled upon a lost page, but don't worry, your outfit is still on the right track.
         </Text>
+        <Link href="/">Back to Home</Link>
       </VStack>
     </Flex>
   );

@@ -1,5 +1,5 @@
 import { Card, CardBody, CardHeader, Flex, useColorMode, useToast } from "@chakra-ui/react";
-import { lazy, useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { API_Route, StepsOrder } from "../../constants/others";
@@ -135,17 +135,19 @@ const MatchPage = () => {
         <CardBody>
           {currentStep === 0 && <GenderStep value={formValues["Gender"]} setValue={setValue} onNext={nextStep} />}
           {currentStep > 0 && (
-            <StepComponent
-              step={StepsOrder[currentStep]}
-              values={formValues}
-              setValue={setValue}
-              gender={formValues["Gender"]}
-              onPrev={previousStep}
-              onNext={nextStep}
-              last={currentStep >= StepsOrder.length - 1}
-              isLoading={isLoading}
-              fetchResults={handleSubmit}
-            />
+            <Suspense>
+              <StepComponent
+                step={StepsOrder[currentStep]}
+                values={formValues}
+                setValue={setValue}
+                gender={formValues["Gender"]}
+                onPrev={previousStep}
+                onNext={nextStep}
+                last={currentStep >= StepsOrder.length - 1}
+                isLoading={isLoading}
+                fetchResults={handleSubmit}
+              />
+            </Suspense>
           )}
         </CardBody>
       </Card>

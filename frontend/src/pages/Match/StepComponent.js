@@ -47,6 +47,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
   );
   const [prediction, setPrediction] = useState("");
   const helperText = StepsHelperText[step][gender];
+
   const handleSuggestionChange = (event) => {
     let suggestions = values["Suggestions"];
     if (event.target.checked) suggestions.add(step);
@@ -101,6 +102,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                 exit={{ x: -1000, opacity: 0 }}
                 key={step}
                 style={StepStyles[step][gender][0]}
+                alt={step}
               />
             </AnimatePresence>
           </VStack>
@@ -215,6 +217,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                 exit={{ x: 1000, opacity: 0 }}
                 style={StepStyles[step][gender][1]}
                 key={step}
+                alt={step}
               />
             </AnimatePresence>
           </VStack>
@@ -263,6 +266,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                     onAnimationComplete={() => setIsVis(false)}
                     style={{ maxWidth: resultsKey === "Mickey" ? "100%" : "55%" }}
                     key={resultsKey}
+                    alt={resultsKey}
                   />
                 </VStack>
               ) : (
@@ -278,7 +282,9 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                     </Text>
                     <VStack spacing={5}>
                       {outImages.length &&
-                        outImages.map((imgSrc, index) => <img src={imgSrc} key={index} width="256" height="256" />)}
+                        outImages.map((imgSrc, index) => (
+                          <img src={imgSrc} key={index} alt={imgSrc} width="256" height="256" />
+                        ))}
                     </VStack>
                   </Box>
                 </motion.div>

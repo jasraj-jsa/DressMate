@@ -59,6 +59,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
               exit={{ opacity: 0 }}
               src={Gender[value][1]}
               style={GenderStyles["Selected"]}
+              alt={value}
             />
           </VStack>
         ) : (
@@ -89,6 +90,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                   onClick={() => {
                     setValue("Gender", "Female");
                   }}
+                  alt="Agnes"
                 />
               </VStack>
             </GridItem>
@@ -131,6 +133,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                   onClick={() => {
                     setValue("Gender", "Male");
                   }}
+                  alt="Batman"
                 />
               </VStack>
             </GridItem>

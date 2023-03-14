@@ -1,17 +1,19 @@
 import { useColorMode } from "@chakra-ui/react";
-import HomePage from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { dark, light } from "./styles/Themes";
-import ModeIcon from "./components/ModeIcon";
-import MatchPage from "./pages/Match";
-import AboutPage from "./pages/AboutPage";
 import Logo from "./components/Logo";
 import Navbar from "./components/Navbar";
 import GlobalStyles from "./styles/GlobalStyles";
 import { Container } from "./components/Global";
-import NotFound from "./components/NotFound";
 import Footer from "./components/Footer";
+import { lazy } from "react";
+
+const HomePage = lazy(() => import("./pages/Home"));
+const ModeIcon = lazy(() => import("./components/ModeIcon"));
+const MatchPage = lazy(() => import("./pages/Match"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const NotFound = lazy(() => import("./components/NotFound"));
 
 function App() {
   const { colorMode, toggleColorMode } = useColorMode();

@@ -85,6 +85,7 @@ const AboutPage = () => {
                 whileHover={{ scale: 1.2 }}
                 src={AboutPaths["Agnes"]}
                 style={AboutStyles["Agnes"]}
+                alt="Agnes"
               />
             </GridItem>
             <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
@@ -99,6 +100,7 @@ const AboutPage = () => {
                 whileHover={{ scale: 1.5 }}
                 src={AboutPaths["Batman"]}
                 style={AboutStyles["Batman"]}
+                alt="Batman"
               />
             </GridItem>
           </Grid>

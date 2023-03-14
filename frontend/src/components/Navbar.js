@@ -1,9 +1,10 @@
 import { useDisclosure, Link } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { lazy, useState } from "react";
 import styled from "styled-components";
-import ConfigComponent from "./Config";
-import GuideComponent from "./Guide";
+
+const GuideComponent = lazy(() => import("./Guide"));
+const ConfigComponent = lazy(() => import("./Config"));
 
 const NavContainer = styled(motion.div)`
   position: absolute;

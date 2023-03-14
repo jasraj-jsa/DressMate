@@ -100,6 +100,7 @@ const DisclaimerPopUp = () => {
                     whileHover={{ scale: 1.5 }}
                     src={DisclaimerPaths["Coder"]}
                     style={DisclaimerStyles["Coder"]}
+                    alt="Coder"
                   />
                 </VStack>
               </GridItem>
@@ -127,6 +128,7 @@ const DisclaimerPopUp = () => {
                     whileHover={{ scale: 1.3 }}
                     src={DisclaimerPaths["Voldemort"]}
                     style={DisclaimerStyles["Voldemort"]}
+                    alt="Voldemort"
                   />
                 </VStack>
               </GridItem>

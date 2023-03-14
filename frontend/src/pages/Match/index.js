@@ -1,11 +1,12 @@
 import { Card, CardBody, CardHeader, Flex, useColorMode, useToast } from "@chakra-ui/react";
-import { useState } from "react";
+import { lazy, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import GenderStep from "./Gender";
-import StepComponent from "./StepComponent";
 import { API_Route, StepsOrder } from "../../constants/others";
 import { CardStyles } from "../../styles/Themes";
+
+const GenderStep = lazy(() => import("./Gender"));
+const StepComponent = lazy(() => import("./StepComponent"));
 
 const Title = styled(motion.div)`
   position: absolute;

@@ -25,7 +25,7 @@ router.post("/", async (req, res, next) => {
 
     const output = await generateResponse(openai, prompt, Temperature);
 
-    const generateFeature = async (fprompt) => {
+    const generateFeature = async (fprompt, category) => {
       const features = await generateResponse(openai, fprompt);
       if (!["no", "no."].includes(features.toLowerCase())) {
         const image = await generateImage(openai, features);
@@ -55,7 +55,7 @@ router.post("/", async (req, res, next) => {
     for (const category of outfitCategories) {
       const feature = category === "FootAcc" ? "Footwear or Fashion Accessories" : category;
       const featurePrompt = generateFeaturePrompt(feature, output, exampleConstants[category][Gender]);
-      calls.push(generateFeature(featurePrompt));
+      calls.push(generateFeature(featurePrompt, category));
     }
     await Promise.all(calls);
 

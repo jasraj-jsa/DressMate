@@ -5,6 +5,7 @@ import { AboutPaths } from "../../constants/paths";
 import { AboutPageContent } from "../../constants/content";
 import { AboutStyles } from "../../constants/styles";
 import { CardStyles } from "../../styles/Themes";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Title = styled(motion.div)`
   position: absolute;
@@ -63,7 +64,7 @@ const AboutPage = () => {
   const { colorMode } = useColorMode();
   return (
     <Flex justifyContent="center" alignItems="center">
-      <Card sx={CardStyles[colorMode]}>
+      <Card sx={CardStyles[colorMode]} minHeight="80vh">
         <CardHeader>
           <Title variants={container} initial="hidden" animate="show">
             <div>
@@ -79,29 +80,27 @@ const AboutPage = () => {
         <CardBody>
           <Grid templateColumns="repeat(4, 1fr)" mt={20} mb={10}>
             <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
-              <motion.img
+              <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
                 whileHover={{ scale: 1.2 }}
-                src={AboutPaths["Agnes"]}
-                style={AboutStyles["Agnes"]}
-                alt="Agnes"
-              />
+              >
+                <LazyLoadImage src={AboutPaths["Agnes"]} style={AboutStyles["Agnes"]} alt="Agnes" />
+              </motion.div>
             </GridItem>
-            <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
+            <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2} mt={5}>
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 3 }}>
                 <Text dangerouslySetInnerHTML={{ __html: AboutPageContent.replace(/\n/g, "<br />") }} />
               </motion.div>
             </GridItem>
             <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
-              <motion.img
+              <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
                 whileHover={{ scale: 1.5 }}
-                src={AboutPaths["Batman"]}
-                style={AboutStyles["Batman"]}
-                alt="Batman"
-              />
+              >
+                <LazyLoadImage src={AboutPaths["Batman"]} style={AboutStyles["Batman"]} alt="Batman" />
+              </motion.div>
             </GridItem>
           </Grid>
         </CardBody>

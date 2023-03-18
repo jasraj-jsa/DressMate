@@ -9,23 +9,23 @@ export const AboutStyles = {
 };
 
 export const GenderStyles = {
-  Selected: { maxHeight: "80%" },
-  Male: { maxWidth: "62%" },
+  Selected: { maxHeight: "65%" },
+  Male: { maxWidth: "85%" },
   Female: { maxWidth: "100%" },
 };
 
 export const StepStyles = {
   Headwear: {
-    Male: [{ maxWidth: "80%" }, { maxWidth: "100%", marginTop: "10%" }],
-    Female: [{ maxWidth: "90%" }, { maxWidth: "100%" }],
+    Male: [{ maxWidth: "90%" }, { maxWidth: "100%", marginTop: "10%" }],
+    Female: [{ maxWidth: "100%" }, { maxWidth: "100%" }],
   },
   Outfit: {
-    Male: [{ maxWidth: "90%" }, { maxWidth: "55%" }],
-    Female: [{ maxWidth: "80%", marginTop: "20%" }, { maxWidth: "80%" }],
+    Male: [{ maxWidth: "85%" }, { maxWidth: "50%" }],
+    Female: [{ maxWidth: "60%" }, { maxWidth: "65%" }],
   },
   FootAcc: {
-    Male: [{ maxWidth: "100%" }, { maxWidth: "100%" }],
-    Female: [{ maxWidth: "70%" }, { maxWidth: "90%" }],
+    Male: [{ maxWidth: "95%" }, { maxWidth: "100%" }],
+    Female: [{ maxWidth: "65%" }, { maxWidth: "90%" }],
   },
   Occasion: {
     Male: [{ maxWidth: "70%" }, { maxWidth: "50%" }],

@@ -20,6 +20,7 @@ import { DisclaimerPaths } from "../../constants/paths";
 import { DisclaimerDialogues } from "../../constants/dialogues";
 import { DisclaimerContent } from "../../constants/content";
 import { DisclaimerStyles } from "../../constants/styles";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Container = styled.div`
   position: absolute;
@@ -94,14 +95,13 @@ const DisclaimerPopUp = () => {
                       <Text>{DisclaimerDialogues["Coder"]}</Text>
                     </Box>
                   </motion.div>
-                  <motion.img
+                  <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1, transition: { duration: 2 } }}
                     whileHover={{ scale: 1.5 }}
-                    src={DisclaimerPaths["Coder"]}
-                    style={DisclaimerStyles["Coder"]}
-                    alt="Coder"
-                  />
+                  >
+                    <LazyLoadImage src={DisclaimerPaths["Coder"]} style={DisclaimerStyles["Coder"]} alt="Coder" />
+                  </motion.div>
                 </VStack>
               </GridItem>
               <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
@@ -122,14 +122,17 @@ const DisclaimerPopUp = () => {
                       <Text>{DisclaimerDialogues["Voldemort"]}</Text>
                     </Box>
                   </motion.div>
-                  <motion.img
+                  <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1, transition: { duration: 2 } }}
                     whileHover={{ scale: 1.3 }}
-                    src={DisclaimerPaths["Voldemort"]}
-                    style={DisclaimerStyles["Voldemort"]}
-                    alt="Voldemort"
-                  />
+                  >
+                    <LazyLoadImage
+                      src={DisclaimerPaths["Voldemort"]}
+                      style={DisclaimerStyles["Voldemort"]}
+                      alt="Voldemort"
+                    />
+                  </motion.div>
                 </VStack>
               </GridItem>
             </Grid>

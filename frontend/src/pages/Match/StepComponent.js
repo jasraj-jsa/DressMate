@@ -24,24 +24,25 @@ import {
 } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { StepPaths, ResultPaths } from "../../constants/paths";
-import { getRandomElement } from "../../utils";
+import { GetRandomElement } from "../../utils";
 import { StepsContent, StepsHelperText } from "../../constants/content";
 import { StepDialgoues } from "../../constants/dialogues";
 import { StepStyles } from "../../constants/styles";
 import { GrPrevious, GrNext } from "react-icons/gr";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import { useMemo, useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, isLoading, fetchResults }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isVis, setIsVis] = useState(true);
   const [counter, setCounter] = useState(0);
   const [outImages, setOutImages] = useState([]);
-  const label = useMemo(() => getRandomElement(StepsContent[step][gender]), [step, gender]);
+  const label = useMemo(() => GetRandomElement(StepsContent[step][gender]), [step, gender]);
   const dialogues = useMemo(
     () => [
-      getRandomElement(StepDialgoues[step][gender][0]["dialogues"]),
-      getRandomElement(StepDialgoues[step][gender][1]["dialogues"]),
+      GetRandomElement(StepDialgoues[step][gender][0]["dialogues"]),
+      GetRandomElement(StepDialgoues[step][gender][1]["dialogues"]),
     ],
     [step, gender]
   );
@@ -73,9 +74,9 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
   };
 
   return (
-    <Box mt={20}>
-      <Grid templateColumns="repeat(6, 1fr)" gap={3} mb={5}>
-        <GridItem colSpan={2} display="flex" justifyContent="center" alignItems="center">
+    <Box>
+      <Grid templateColumns="repeat(3, 1fr)" gap={3} mb={5}>
+        <GridItem colSpan={1} display="flex" justifyContent="center" alignItems="center">
           <VStack spacing={10}>
             <AnimatePresence mode="wait">
               <motion.div
@@ -91,8 +92,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
               </motion.div>
             </AnimatePresence>
             <AnimatePresence mode="wait">
-              <motion.img
-                src={StepPaths[step][gender][0]}
+              <motion.div
                 whileHover={{
                   scale: 1.2,
                 }}
@@ -101,13 +101,18 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -1000, opacity: 0 }}
                 key={step}
-                style={StepStyles[step][gender][0]}
-                alt={step}
-              />
+              >
+                <LazyLoadImage
+                  src={StepPaths[step][gender][0]}
+                  style={StepStyles[step][gender][0]}
+                  key={step}
+                  alt={step}
+                />
+              </motion.div>
             </AnimatePresence>
           </VStack>
         </GridItem>
-        <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
+        <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1} mt={20}>
           <AnimatePresence mode="wait">
             <motion.div
               initial={{ opacity: 0 }}
@@ -188,7 +193,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
             </motion.div>
           </AnimatePresence>
         </GridItem>
-        <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
+        <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
           <VStack spacing={10}>
             <AnimatePresence mode="wait">
               <motion.div
@@ -206,8 +211,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
               </motion.div>
             </AnimatePresence>
             <AnimatePresence mode="wait">
-              <motion.img
-                src={StepPaths[step][gender][1]}
+              <motion.div
                 whileHover={{
                   scale: 1.2,
                 }}
@@ -215,10 +219,15 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                 initial={{ x: 1000, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 1000, opacity: 0 }}
-                style={StepStyles[step][gender][1]}
                 key={step}
-                alt={step}
-              />
+              >
+                <LazyLoadImage
+                  src={StepPaths[step][gender][1]}
+                  style={StepStyles[step][gender][1]}
+                  key={step}
+                  alt={step}
+                />
+              </motion.div>
             </AnimatePresence>
           </VStack>
         </GridItem>

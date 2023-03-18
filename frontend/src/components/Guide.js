@@ -1,5 +1,6 @@
 import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { GuidePaths } from "../constants/paths";
 
 const GuideComponent = ({ isOpen, onClose }) => {
   return (
@@ -11,7 +12,7 @@ const GuideComponent = ({ isOpen, onClose }) => {
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody m={4}>
-          <video src="/assets/Guide.mp4" type="video/mp4" controls poster="/assets/GuideThumbnail.png" />
+          <video src={GuidePaths["Video"]} type="video/mp4" controls poster={GuidePaths["Thumbnail"]} />
         </ModalBody>
       </ModalContent>
     </Modal>

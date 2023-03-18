@@ -32,7 +32,7 @@ export const GenderDialogues = {
     {
       name: "Agnes",
       dialogues: [
-        "Hi there! I'm Agnes, the littlest and cutest of the three orphans! I may be small, but I'm full of life and I love adventure! I'm always up for a new experience, especially if it involves cuddling with a few cute animals!",
+        "Hi there! I'm Agnes, the littlest and cutest of the three orphans! I may be small, but I'm full of life and I love adventure!",
         "Hi! I'm Agnes, the littlest and funniest member of the Gru family. I love animals, unicorns, and kittens — anything that's cute and cuddly!",
         "Hi there! I'm Agnes, the littlest and cutest minion in the world! I love singing, playing with my unicorn, and helping my friends with their evil schemes!",
       ],
@@ -82,8 +82,7 @@ export const StepDialgoues = {
       {
         name: "Harry Potter",
         dialogues: [
-          "This outfit is magical! I've got a robe for the spell casting, a scarf for the Quidditch matches, and a pair of glasses for the sorting hat to help me get sorted into Gryffindor. It's a winning combination!",
-          "My outfit? Why, I'm rocking the latest in wizard fashion: robes with a hint of 'Hogwarts chic' - because you never know when you might have to battle an evil wizard!",
+          "My outfit? Why, I'm rocking the latest in wizard fashion: robes with a hint of 'Hogwarts chic'",
           "My outfit is basically a statement that says 'I'm the Chosen One, so don't mess with me!",
           "My outfit? It's just a muggle's version of my school uniform, only without the invisibility cloak!",
         ],
@@ -114,7 +113,7 @@ export const StepDialgoues = {
         name: "Puss In Boots",
         dialogues: [
           "My boots are the purr-fect combination of style and swashbuckling savvy!",
-          "These boots are the cat's meow! They keep my feet warm, look purr-fectly stylish, and always make me feel like the coolest cat in town!",
+          "These boots are the cat's meow! They look purr-fectly stylish, and always make me feel like the coolest cat in town!",
           "My boots? The ultimate combination of style and swagger, perfect for any heroic adventure",
         ],
       },
@@ -145,7 +144,6 @@ export const StepDialgoues = {
         dialogues: [
           "My outfit is fancy enough to impress the Queen of Arendelle, but rugged enough to survive a snowstorm!",
           "This outfit is formal enough for a coronation, but still rugged enough for a day of ice harvesting with Olaf!",
-          "Ya, I'm dressed up for the occasion. I'm ready to look my best for the big event. Even Sven couldn't resist getting in on the fun and is wearing his best reindeer antlers! Olaf's here too, but he's just wearing his usual snowman attire.",
         ],
       },
       {

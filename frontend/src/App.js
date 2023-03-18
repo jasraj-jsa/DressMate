@@ -7,7 +7,8 @@ import Navbar from "./components/Navbar";
 import GlobalStyles from "./styles/GlobalStyles";
 import { Container } from "./components/Global";
 import Footer from "./components/Footer";
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 const HomePage = lazy(() => import("./pages/Home"));
 const ModeIcon = lazy(() => import("./components/ModeIcon"));
@@ -25,18 +26,20 @@ function App() {
         <Container>
           <Logo />
           <Navbar />
-          <Routes>
-            <Route path="/">
-              <Route index element={<HomePage />} />
-            </Route>
-            <Route path="/match">
-              <Route index element={<MatchPage />} />
-            </Route>
-            <Route path="/about">
-              <Route index element={<AboutPage />} />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path="/">
+                <Route index element={<HomePage />} />
+              </Route>
+              <Route path="/match">
+                <Route index element={<MatchPage />} />
+              </Route>
+              <Route path="/about">
+                <Route index element={<AboutPage />} />
+              </Route>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
           <Footer />
         </Container>
       </ThemeProvider>

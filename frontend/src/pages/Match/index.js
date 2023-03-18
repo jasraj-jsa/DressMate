@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { API_Route, StepsOrder } from "../../constants/others";
 import { CardStyles } from "../../styles/Themes";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const GenderStep = lazy(() => import("./Gender"));
 const StepComponent = lazy(() => import("./StepComponent"));
@@ -120,7 +121,7 @@ const MatchPage = () => {
 
   return (
     <Flex justifyContent="center" alignItems="center">
-      <Card sx={CardStyles[colorMode]}>
+      <Card sx={CardStyles[colorMode]} minHeight="100vh">
         <CardHeader>
           <Title variants={container} initial="hidden" animate="show">
             <div>
@@ -133,9 +134,12 @@ const MatchPage = () => {
           </Title>
         </CardHeader>
         <CardBody>
-          {currentStep === 0 && <GenderStep value={formValues["Gender"]} setValue={setValue} onNext={nextStep} />}
-          {currentStep > 0 && (
-            <Suspense>
+          {currentStep === 0 ? (
+            <Suspense fallback={<LoadingSpinner />}>
+              <GenderStep value={formValues["Gender"]} setValue={setValue} onNext={nextStep} />
+            </Suspense>
+          ) : (
+            <Suspense fallback={<LoadingSpinner />}>
               <StepComponent
                 step={StepsOrder[currentStep]}
                 values={formValues}

@@ -1,37 +1,42 @@
-const BasePath = "/assets";
+export const VideoPath = require("../assets/DressUp.mp4");
+
+export const GuidePaths = { Thumbnail: require("../assets/GuideThumbnail.png"), Video: require("../assets/Guide.mp4") };
 
 export const DisclaimerPaths = {
-  Coder: `${BasePath}/Disclaimer/Coder.svg`,
-  Voldemort: `${BasePath}/Disclaimer/Voldemort.svg`,
+  Coder: require(`../assets/Disclaimer/Coder.svg`).default,
+  Voldemort: require(`../assets/Disclaimer/Voldemort.svg`).default,
 };
 
-export const AboutPaths = { Agnes: `${BasePath}/About/Agnes1.svg`, Batman: `${BasePath}/About/Batman2.svg` };
+export const AboutPaths = {
+  Agnes: require(`../assets/About/Agnes1.svg`).default,
+  Batman: require(`../assets/About/Batman2.svg`).default,
+};
 
 export const Gender = {
-  Male: [`${BasePath}/Gender/batman1.svg`, `${BasePath}/Gender/batman2.svg`],
-  Female: [`${BasePath}/Gender/Agnes.svg`, `${BasePath}/Gender/Agnes1.svg`],
+  Male: [require(`../assets/Gender/batman1.svg`).default, require(`../assets/Gender/batman2.svg`).default],
+  Female: [require(`../assets/Gender/Agnes.svg`).default, require(`../assets/Gender/Agnes1.svg`).default],
 };
 
 export const StepPaths = {
   Headwear: {
-    Male: [`${BasePath}/Headwear/Minion1.svg`, `${BasePath}/Headwear/beanie.svg`],
-    Female: [`${BasePath}/Headwear/Edith1.svg`, `${BasePath}/Headwear/beanie1.svg`],
+    Male: [require(`../assets/Headwear/Minion1.svg`).default, require(`../assets/Headwear/beanie.svg`).default],
+    Female: [require(`../assets/Headwear/Edith1.svg`).default, require(`../assets/Headwear/beanie1.svg`).default],
   },
   Outfit: {
-    Male: [`${BasePath}/Outfit/Woody.svg`, `${BasePath}/Outfit/HP.svg`],
-    Female: [`${BasePath}/Outfit/Jessie.svg`, `${BasePath}/Outfit/Hermoine.svg`],
+    Male: [require(`../assets/Outfit/Woody.svg`).default, require(`../assets/Outfit/HP.svg`).default],
+    Female: [require(`../assets/Outfit/Jessie.svg`).default, require(`../assets/Outfit/Hermoine.svg`).default],
   },
   FootAcc: {
-    Male: [`${BasePath}/FootAcc/PIB.svg`, `${BasePath}/FootAcc/Acc.svg`],
-    Female: [`${BasePath}/FootAcc/PIB1.svg`, `${BasePath}/FootAcc/Footwear.svg`],
+    Male: [require(`../assets/FootAcc/PIB.svg`).default, require(`../assets/FootAcc/Acc.svg`).default],
+    Female: [require(`../assets/FootAcc/PIB1.svg`).default, require(`../assets/FootAcc/Footwear.svg`).default],
   },
   Occasion: {
-    Male: [`${BasePath}/Occasion/Frozen1.svg`, `${BasePath}/Occasion/Tangled1.svg`],
-    Female: [`${BasePath}/Occasion/Frozen.svg`, `${BasePath}/Occasion/Tangled.svg`],
+    Male: [require(`../assets/Occasion/Frozen1.svg`).default, require(`../assets/Occasion/Tangled1.svg`).default],
+    Female: [require(`../assets/Occasion/Frozen.svg`).default, require(`../assets/Occasion/Tangled.svg`).default],
   },
 };
 
 export const ResultPaths = {
-  Mickey: `${BasePath}/Results/mickey.svg`,
-  Minions: `${BasePath}/Results/minions.svg`,
+  Mickey: require(`../assets/Results/mickey.svg`).default,
+  Minions: require(`../assets/Results/minions.svg`).default,
 };

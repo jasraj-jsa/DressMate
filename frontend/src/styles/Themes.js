@@ -50,7 +50,7 @@ export const TextStyles = {
 const CardBaseStyles = {
   w: "95%",
   size: "lg",
-  mt: "8%",
+  mt: "7%",
   mb: "2%",
   align: "center",
   shadow: "dark-lg",

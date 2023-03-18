@@ -1,7 +1,8 @@
 import { useDisclosure, Link } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import React, { lazy, useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import styled from "styled-components";
+import LoadingSpinner from "./LoadingSpinner";
 
 const GuideComponent = lazy(() => import("./Guide"));
 const ConfigComponent = lazy(() => import("./Config"));
@@ -104,7 +105,9 @@ const Navbar = () => {
           }}
         >
           <Link _hover={{ textDecoration: "none" }}>Guide</Link>
-          <GuideComponent isOpen={helpIsOpen} onClose={helpOnClose} />
+          <Suspense fallback={<LoadingSpinner />}>
+            <GuideComponent isOpen={helpIsOpen} onClose={helpOnClose} />
+          </Suspense>
         </Item>
         <Item whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9, y: 0 }}>
           <Link href="/about" _hover={{ textDecoration: "none" }}>
@@ -121,7 +124,9 @@ const Navbar = () => {
           }}
         >
           <Link _hover={{ textDecoration: "none" }}>Config</Link>
-          <ConfigComponent isOpen={configIsOpen} onClose={configOnClose} />
+          <Suspense fallback={<LoadingSpinner />}>
+            <ConfigComponent isOpen={configIsOpen} onClose={configOnClose} />
+          </Suspense>
         </Item>
       </MenuItems>
     </NavContainer>

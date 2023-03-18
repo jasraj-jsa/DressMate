@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import React from "react";
 import styled from "styled-components";
 import { HStack, Link, Text, Icon } from "@chakra-ui/react";
 import { FaRegCopyright } from "react-icons/fa";
 import { WebsiteTagline } from "../../constants/content";
+import { VideoPath } from "../../constants/paths";
 
 const VideoContainer = styled.section`
   width: 100%;
@@ -113,7 +113,7 @@ const CoverVideo = () => {
         </motion.div>
       </Title>
 
-      <video src="/assets/DressUp.mp4" type="video/mp4" autoPlay muted loop />
+      <video src={VideoPath} type="video/mp4" autoPlay muted loop />
     </VideoContainer>
   );
 };

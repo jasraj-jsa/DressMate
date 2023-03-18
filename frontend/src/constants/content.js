@@ -1,5 +1,5 @@
 export const WebsiteTagline =
-  "A virtual wardrobe assistant that helps you match Your Outfits Like a Pro With Personalized Outfit Suggestions.";
+  "A virtual wardrobe assistant that helps you match Your Outfits\n Like a Pro With Personalized Outfit Suggestions.";
 
 export const DisclaimerContent =
   "While we are here to help you match your outfits like a boss, we want to make it clear that this website is for those people who want to look stylish and put together without sacrificing comfort or individuality. \n\nThis website isn't for you if you fall into one of the following categories: \n\n  1. You're a person who wears shorts and slippers to the office. We love a good pair of crocs as much as the next person, but let's keep the fashion-forward looks to the streets, okay? \n\n 2. You're a fan of Voldemort's wardrobe choices (all-black everything and a creepy snake on the arm). We're all for dark and mysterious, but Voldemort's style is just too dark and mysterious for us.";

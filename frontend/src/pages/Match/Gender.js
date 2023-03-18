@@ -27,7 +27,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
             <motion.div
               key={value}
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { duration: 2 } }}
+              animate={{ opacity: 1, transition: { duration: 1, delay: 0.75 } }}
               exit={{ opacity: 0 }}
             >
               <Box rounded="lg" p={4} bg="gray.800" color="white" mt={20}>
@@ -63,7 +63,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
             </motion.div>
           </VStack>
         ) : (
-          <Grid templateColumns="repeat(4, 1fr)" gap={3} key="select">
+          <Grid templateColumns="repeat(4, 1fr)" key="select">
             <GridItem colSpan={1} display="flex" justifyContent="center" alignItems="center">
               <VStack spacing={10}>
                 <motion.div

@@ -253,7 +253,13 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
               <AnimatePresence mode="wait">
                 {isVis ? (
                   <VStack>
-                    <motion.div style={{ display: "flex" }} exit={{ opacity: 0 }} key="initial">
+                    <motion.div
+                      style={{ display: "flex" }}
+                      exit={{ opacity: 0 }}
+                      key="initial"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1, transition: { delay: 0.5 } }}
+                    >
                       <motion.h1 key="initial" style={{ fontSize: "2em" }}>
                         Pulling your results out
                       </motion.h1>
@@ -281,15 +287,19 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                         </motion.h1>
                       </AnimatePresence>
                     </motion.div>
-                    <motion.img
-                      src={ResultPaths[resultsKey]}
+                    <motion.div
                       animate={{ y: [-200, 0, -200], transition: { repeat: 2, duration: 2 } }}
-                      exit={{ y: [-200, 500], transition: { duration: 1 } }}
+                      exit={{ y: [-200, 800], transition: { duration: 1.5 } }}
                       onAnimationComplete={() => setIsVis(false)}
-                      style={{ maxWidth: resultsKey === "Mickey" ? "100%" : "55%" }}
                       key={resultsKey}
-                      alt={resultsKey}
-                    />
+                      style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+                    >
+                      <LazyLoadImage
+                        src={ResultPaths[resultsKey]}
+                        style={{ maxWidth: resultsKey === "Mickey" ? "100%" : "55%" }}
+                        alt={resultsKey}
+                      />
+                    </motion.div>
                   </VStack>
                 ) : (
                   <motion.div

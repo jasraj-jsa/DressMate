@@ -20,7 +20,6 @@ import { DisclaimerPaths } from "../../constants/paths";
 import { DisclaimerDialogues } from "../../constants/dialogues";
 import { DisclaimerContent } from "../../constants/content";
 import { DisclaimerStyles } from "../../constants/styles";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Container = styled.div`
   position: absolute;
@@ -100,7 +99,7 @@ const DisclaimerPopUp = () => {
                     animate={{ scale: 1, opacity: 1, transition: { duration: 2 } }}
                     whileHover={{ scale: 1.5 }}
                   >
-                    <LazyLoadImage src={DisclaimerPaths["Coder"]} style={DisclaimerStyles["Coder"]} alt="Coder" />
+                    <img src={DisclaimerPaths["Coder"]} style={DisclaimerStyles["Coder"]} alt="Coder" />
                   </motion.div>
                 </VStack>
               </GridItem>
@@ -127,11 +126,7 @@ const DisclaimerPopUp = () => {
                     animate={{ scale: 1, opacity: 1, transition: { duration: 2 } }}
                     whileHover={{ scale: 1.3 }}
                   >
-                    <LazyLoadImage
-                      src={DisclaimerPaths["Voldemort"]}
-                      style={DisclaimerStyles["Voldemort"]}
-                      alt="Voldemort"
-                    />
+                    <img src={DisclaimerPaths["Voldemort"]} style={DisclaimerStyles["Voldemort"]} alt="Voldemort" />
                   </motion.div>
                 </VStack>
               </GridItem>

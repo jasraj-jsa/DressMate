@@ -5,7 +5,6 @@ import { GenderDialogues } from "../../constants/dialogues";
 import { GenderStyles } from "../../constants/styles";
 import { GetRandomElement } from "../../utils";
 import { useMemo } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const GenderStep = ({ value, setValue, onNext }) => {
   const { colorMode } = useColorMode();
@@ -59,7 +58,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
               whileHover={{ scale: 1.2 }}
               exit={{ opacity: 0 }}
             >
-              <LazyLoadImage src={Gender[value][1]} style={GenderStyles["Selected"]} key={value} alt={value} />
+              <img src={Gender[value][1]} style={GenderStyles["Selected"]} key={value} alt={value} />
             </motion.div>
           </VStack>
         ) : (
@@ -88,15 +87,15 @@ const GenderStep = ({ value, setValue, onNext }) => {
                     setValue("Gender", "Female");
                   }}
                 >
-                  <LazyLoadImage src={Gender["Female"][0]} style={GenderStyles["Female"]} key="Agnes" alt="Agnes" />
+                  <img src={Gender["Female"][0]} style={GenderStyles["Female"]} key="Agnes" alt="Agnes" />
                 </motion.div>
               </VStack>
             </GridItem>
             <GridItem display="flex" justifyContent="center" alignItems="center" colSpan={2} mt={20}>
               <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { delay: 1.5 } }}
-                transition={{ duration: 1 }}
+                animate={{ opacity: 1, transition: { delay: 1, duration: 1.5 } }}
+                transition={{ duration: 1.5 }}
                 exit={{ opacity: 0 }}
               >
                 {value === null && (
@@ -130,7 +129,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                     setValue("Gender", "Male");
                   }}
                 >
-                  <LazyLoadImage src={Gender["Male"][0]} style={GenderStyles["Male"]} alt="Batman" key="Batman" />
+                  <img src={Gender["Male"][0]} style={GenderStyles["Male"]} alt="Batman" key="Batman" />
                 </motion.div>
               </VStack>
             </GridItem>

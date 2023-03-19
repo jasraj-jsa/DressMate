@@ -31,7 +31,6 @@ import { StepStyles } from "../../constants/styles";
 import { GrPrevious, GrNext } from "react-icons/gr";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import { useMemo, useState } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, isLoading, fetchResults }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -107,12 +106,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                   alignItems: "center",
                 }}
               >
-                <LazyLoadImage
-                  src={StepPaths[step][gender][0]}
-                  style={StepStyles[step][gender][0]}
-                  key={step}
-                  alt={step}
-                />
+                <img src={StepPaths[step][gender][0]} style={StepStyles[step][gender][0]} key={step} alt={step} />
               </motion.div>
             </AnimatePresence>
           </VStack>
@@ -233,12 +227,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                   alignItems: "center",
                 }}
               >
-                <LazyLoadImage
-                  src={StepPaths[step][gender][1]}
-                  style={StepStyles[step][gender][1]}
-                  key={step}
-                  alt={step}
-                />
+                <img src={StepPaths[step][gender][1]} style={StepStyles[step][gender][1]} key={step} alt={step} />
               </motion.div>
             </AnimatePresence>
           </VStack>
@@ -294,7 +283,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                       key={resultsKey}
                       style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
                     >
-                      <LazyLoadImage
+                      <img
                         src={ResultPaths[resultsKey]}
                         style={{ maxWidth: resultsKey === "Mickey" ? "100%" : "55%" }}
                         alt={resultsKey}
@@ -315,14 +304,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                       <VStack spacing={5}>
                         {outImages.length &&
                           outImages.map((imgSrc, index) => (
-                            <LazyLoadImage
-                              effect="blur"
-                              src={imgSrc}
-                              key={index}
-                              alt={imgSrc}
-                              width="256"
-                              height="256"
-                            />
+                            <img src={imgSrc} key={index} alt={imgSrc} width="256" height="256" />
                           ))}
                       </VStack>
                     </Box>

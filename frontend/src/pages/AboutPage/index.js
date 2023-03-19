@@ -5,7 +5,6 @@ import { AboutPaths } from "../../constants/paths";
 import { AboutPageContent } from "../../constants/content";
 import { AboutStyles } from "../../constants/styles";
 import { CardStyles } from "../../styles/Themes";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Title = styled(motion.div)`
   position: absolute;
@@ -85,7 +84,7 @@ const AboutPage = () => {
                 animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
                 whileHover={{ scale: 1.2 }}
               >
-                <LazyLoadImage src={AboutPaths["Agnes"]} style={AboutStyles["Agnes"]} alt="Agnes" />
+                <img src={AboutPaths["Agnes"]} style={AboutStyles["Agnes"]} alt="Agnes" />
               </motion.div>
             </GridItem>
             <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2} mt={5}>
@@ -99,7 +98,7 @@ const AboutPage = () => {
                 animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
                 whileHover={{ scale: 1.5 }}
               >
-                <LazyLoadImage src={AboutPaths["Batman"]} style={AboutStyles["Batman"]} alt="Batman" />
+                <img src={AboutPaths["Batman"]} style={AboutStyles["Batman"]} alt="Batman" />
               </motion.div>
             </GridItem>
           </Grid>

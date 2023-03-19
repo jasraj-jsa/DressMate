@@ -94,13 +94,14 @@ const DisclaimerPopUp = () => {
                       <Text>{DisclaimerDialogues["Coder"]}</Text>
                     </Box>
                   </motion.div>
-                  <motion.div
+                  <motion.img
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1, transition: { duration: 2 } }}
                     whileHover={{ scale: 1.5 }}
-                  >
-                    <img src={DisclaimerPaths["Coder"]} style={DisclaimerStyles["Coder"]} alt="Coder" />
-                  </motion.div>
+                    src={DisclaimerPaths["Coder"]}
+                    style={DisclaimerStyles["Coder"]}
+                    alt="Coder"
+                  />
                 </VStack>
               </GridItem>
               <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2}>
@@ -121,13 +122,14 @@ const DisclaimerPopUp = () => {
                       <Text>{DisclaimerDialogues["Voldemort"]}</Text>
                     </Box>
                   </motion.div>
-                  <motion.div
+                  <motion.img
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1, transition: { duration: 2 } }}
                     whileHover={{ scale: 1.3 }}
-                  >
-                    <img src={DisclaimerPaths["Voldemort"]} style={DisclaimerStyles["Voldemort"]} alt="Voldemort" />
-                  </motion.div>
+                    src={DisclaimerPaths["Voldemort"]}
+                    style={DisclaimerStyles["Voldemort"]}
+                    alt="Voldemort"
+                  />
                 </VStack>
               </GridItem>
             </Grid>

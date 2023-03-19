@@ -47,7 +47,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                 </ButtonGroup>
               </Box>
             </motion.div>
-            <motion.div
+            <motion.img
               initial={{ x: -1000, opacity: 0 }}
               animate={{
                 x: 0,
@@ -57,9 +57,11 @@ const GenderStep = ({ value, setValue, onNext }) => {
               }}
               whileHover={{ scale: 1.2 }}
               exit={{ opacity: 0 }}
-            >
-              <img src={Gender[value][1]} style={GenderStyles["Selected"]} key={value} alt={value} />
-            </motion.div>
+              src={Gender[value][1]}
+              style={GenderStyles["Selected"]}
+              key={value}
+              alt={value}
+            />
           </VStack>
         ) : (
           <Grid templateColumns="repeat(4, 1fr)" key="select">
@@ -75,7 +77,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                     <Text>{dialogues[0]}</Text>
                   </Box>
                 </motion.div>
-                <motion.div
+                <motion.img
                   initial={{ x: -1000, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 2, scale: { duration: 1 } }}
@@ -86,9 +88,11 @@ const GenderStep = ({ value, setValue, onNext }) => {
                   onClick={() => {
                     setValue("Gender", "Female");
                   }}
-                >
-                  <img src={Gender["Female"][0]} style={GenderStyles["Female"]} key="Agnes" alt="Agnes" />
-                </motion.div>
+                  src={Gender["Female"][0]}
+                  style={GenderStyles["Female"]}
+                  key="Agnes"
+                  alt="Agnes"
+                />
               </VStack>
             </GridItem>
             <GridItem display="flex" justifyContent="center" alignItems="center" colSpan={2} mt={20}>
@@ -117,7 +121,7 @@ const GenderStep = ({ value, setValue, onNext }) => {
                     <Text>{dialogues[1]}</Text>
                   </Box>
                 </motion.div>
-                <motion.div
+                <motion.img
                   initial={{ x: 1000, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 2, scale: { duration: 1 } }}
@@ -128,9 +132,11 @@ const GenderStep = ({ value, setValue, onNext }) => {
                   onClick={() => {
                     setValue("Gender", "Male");
                   }}
-                >
-                  <img src={Gender["Male"][0]} style={GenderStyles["Male"]} alt="Batman" key="Batman" />
-                </motion.div>
+                  src={Gender["Male"][0]}
+                  style={GenderStyles["Male"]}
+                  alt="Batman"
+                  key="Batman"
+                />
               </VStack>
             </GridItem>
           </Grid>

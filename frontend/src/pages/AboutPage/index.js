@@ -79,13 +79,14 @@ const AboutPage = () => {
         <CardBody>
           <Grid templateColumns="repeat(4, 1fr)" mt={20} mb={10}>
             <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
-              <motion.div
+              <motion.img
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
                 whileHover={{ scale: 1.2 }}
-              >
-                <img src={AboutPaths["Agnes"]} style={AboutStyles["Agnes"]} alt="Agnes" />
-              </motion.div>
+                src={AboutPaths["Agnes"]}
+                style={AboutStyles["Agnes"]}
+                alt="Agnes"
+              />
             </GridItem>
             <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={2} mt={5}>
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 3 }}>
@@ -93,13 +94,14 @@ const AboutPage = () => {
               </motion.div>
             </GridItem>
             <GridItem w="100%" display="flex" justifyContent="center" alignItems="center" colSpan={1}>
-              <motion.div
+              <motion.img
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
                 whileHover={{ scale: 1.5 }}
-              >
-                <img src={AboutPaths["Batman"]} style={AboutStyles["Batman"]} alt="Batman" />
-              </motion.div>
+                src={AboutPaths["Batman"]}
+                style={AboutStyles["Batman"]}
+                alt="Batman"
+              />
             </GridItem>
           </Grid>
         </CardBody>

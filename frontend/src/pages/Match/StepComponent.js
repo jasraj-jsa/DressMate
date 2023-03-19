@@ -91,7 +91,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
               </motion.div>
             </AnimatePresence>
             <AnimatePresence mode="wait">
-              <motion.div
+              <motion.img
                 whileHover={{
                   scale: 1.2,
                 }}
@@ -99,15 +99,11 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                 initial={{ x: -1000, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -1000, opacity: 0 }}
+                src={StepPaths[step][gender][0]}
+                style={StepStyles[step][gender][0]}
                 key={step}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <img src={StepPaths[step][gender][0]} style={StepStyles[step][gender][0]} key={step} alt={step} />
-              </motion.div>
+                alt={step}
+              />
             </AnimatePresence>
           </VStack>
         </GridItem>
@@ -212,7 +208,7 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
               </motion.div>
             </AnimatePresence>
             <AnimatePresence mode="wait">
-              <motion.div
+              <motion.img
                 whileHover={{
                   scale: 1.2,
                 }}
@@ -220,15 +216,11 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                 initial={{ x: 1000, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 1000, opacity: 0 }}
+                src={StepPaths[step][gender][1]}
+                style={StepStyles[step][gender][1]}
                 key={step}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <img src={StepPaths[step][gender][1]} style={StepStyles[step][gender][1]} key={step} alt={step} />
-              </motion.div>
+                alt={step}
+              />
             </AnimatePresence>
           </VStack>
         </GridItem>
@@ -276,19 +268,15 @@ const StepComponent = ({ step, values, setValue, gender, last, onPrev, onNext, i
                         </motion.h1>
                       </AnimatePresence>
                     </motion.div>
-                    <motion.div
+                    <motion.img
                       animate={{ y: [-200, 0, -200], transition: { repeat: 2, duration: 2 } }}
                       exit={{ y: [-200, 800], transition: { duration: 1.5 } }}
                       onAnimationComplete={() => setIsVis(false)}
                       key={resultsKey}
-                      style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-                    >
-                      <img
-                        src={ResultPaths[resultsKey]}
-                        style={{ maxWidth: resultsKey === "Mickey" ? "100%" : "55%" }}
-                        alt={resultsKey}
-                      />
-                    </motion.div>
+                      src={ResultPaths[resultsKey]}
+                      style={{ maxWidth: resultsKey === "Mickey" ? "100%" : "55%" }}
+                      alt={resultsKey}
+                    />
                   </VStack>
                 ) : (
                   <motion.div

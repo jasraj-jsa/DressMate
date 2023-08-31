@@ -1,4 +1,8 @@
 # Dress Mate
+### A virtual wardrobe assistant that helps you match your outfits like a pro with personalized outfit suggestions. 
+<br/>
+
+**Note:** Please be aware that the Dress Mate website might require approximately 30 seconds to fully load, and there could be some slight delays in rendering its elements. This is primarily attributed to the website's utilization of numerous 3D models and assets. Additionally, the website is hosted on a free-tier version of the hosting platform (Render), which could contribute to the loading time. For a smoother experience, it is advisable to consider running this application on your local system.
 
 ## About
 We understand that getting dressed in the morning can be a real struggle, especially when you're trying to coordinate your outfit like Batman trying to match his cape with his cowl. Sometimes it feels like you're playing a game of "Outfit Roulette". We also understand that sometimes, even with the best intentions, fashion faux pas can happen. But don't worry, we've got your back.
@@ -17,6 +21,15 @@ https://github.com/jasraj-jsa/DressMate/assets/33963772/9b8a6441-5b56-485b-9188-
 - Node JS
 - Node Package Manager (npm)
 
+## Running the application locally
+- Clone the Dress Mate repo to your system.
+- Inside the cloned directory run the following commands to install dependencies:
+  - `npm --prefix ./backend install --save`
+  - `npm --prefix ./frontend install --save`
+- Start the backend server:
+`npm --prefix ./backend start`
+- Start the frontend server (in a different terminal):
+`npm --prefix ./frontend start`
 
 ## Tools & Technologies Used
 - React JS (Additional libraries: Emoticon, Chakra UI, Framer Motion)
